@@ -1,3 +1,3 @@
 # web_making
 
-learing to make web using sc
+MY FIRST PERSONAL WEB
