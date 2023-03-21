@@ -1,0 +1,57 @@
+
+<!-- css3 animationfunction:
+	animation-timing-function: default is ease, other choices: linear;
+		linear: animation change rate in one cycle is linear;
+		ease: change rate in one cycle is : low, faster, low 
+		ease-in: low speed at start
+		ease-out: low speed before finish
+		ease-in-out:
+		cubic-bezier(n, n, n, n): define custom value in cubic-bezier function: from 0-1
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animation_show</title>
+	<style type="text/css">
+
+	/* 1. add pic as background, 
+			1.1 set up in head
+			1.2 setup background size, horizental and vertical-height , and web height;
+	*/
+		body{
+			background-image: url(./images/01.jpeg);
+			background-size: 100% 100%;
+			height:100%;
+		}
+		html{
+			height:100%;
+		}
+		/* 2. add special frame:
+				2.1: setup in head; 
+				2.2: define function name function name is myfirst*/
+		@keyframes headcolorchange{
+						0% {opacity:0;}
+						100% {opacity:100;}
+						}
+			/* 2.3: frame function applied:
+				-  on h1, p;
+				- define animation time, and loop time;
+				*/
+		
+
+		h1{
+			animation: headcolorchange 3s infinite; /* animation time: 2s, recycle time: infinite*/
+			animation-timing-function: linear; /* animation change rate in one cycle is linear /
+		}
+
+	</style>
+
+
+</head>
+<body>
+
+<h1>静夜思</h1>
+
+</body>
+</html>

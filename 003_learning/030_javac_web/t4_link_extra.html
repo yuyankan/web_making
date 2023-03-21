@@ -1,0 +1,46 @@
+
+<!-- 
+	linke extra file: e.g: style 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animation_show</title>
+	<!-- removed this line, as stype used in not from css plug in, but custom defined function<style type="text/css" -->
+	<link rel="stylesheet" type="text/css" href="css/page.css" />
+	<!-- add audio: autoplay -->
+	<script>
+		function audioAutoPlay(id){
+			var audio=document.getElementById(id)
+			audio.play();
+			document.addEventListener("WeixinJSBridgeReady", function(){
+				audio.play();
+			}, false); 
+
+		}
+	</script>
+
+
+</head>
+<!--1. add audio to body -->
+<body onload="audioAutoPlay('bgm');"> 
+	
+<audio id="bgm" src="./wav/bgm.m4a" preload="auto" controls="constrols" autoplay="autoplay">
+	
+</audio>
+
+<!--0. define label: page;
+	add more sub label in winter
+	 -->
+<page id="c"> Spring</page>
+<page id="x"> Summer</page>
+<page id="q"> Autome</page>
+<page id="d"> 
+	Winter
+	<span id="e"> winter is cold</span>
+</page>
+
+
+</body>
+</html>

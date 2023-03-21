@@ -1,0 +1,106 @@
+
+<!-- 
+	create seperate pages and changes them in one cycle
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animation_show</title>
+	<style type="text/css">
+
+	/* !!!3. make each word a page!!!:
+		3.1: define page, html, body
+	*/
+	html, body, page{
+
+		height:100%;
+		width: 100%;
+		margin:0; /* body margin */
+	}
+
+
+
+
+	page{
+		height: 100%;/* 3.2 define page height*/
+		position: absolute;/* 3.3 define page positon absolute(full screen)!!!, if use center, will not create page*/
+		padding-top:30%; /*postion from top*/
+		padding-left: 20%;/*postion from left*/
+		font-size: 150px; /* pic pixl*/
+		/*animation: season 10s infinite;/* animation applied to all pages at same time*/
+	}
+	/* 1. define color and animation for each season */
+	#c{
+		background: lightgreen;
+		animation: season_c 5s infinite;
+	}
+
+	#x{
+		background: red;
+		animation: season_x 5s infinite;
+	}
+
+	#q{
+		background: yellow;
+		animation: season_q 5s infinite;
+	}
+
+	#d{
+		background: black;
+		color: white; /* font color*/
+		animation: season_d 5s infinite;
+	}
+
+	/* 2. define change type for each season*/
+	@keyframes season_c{
+
+		0%{opacity:100}
+		25%{opacity:0}
+		50%{opacity:0}
+		75%{opacity:0}
+		100%{opacity:0}
+	}
+
+	@keyframes season_x{
+
+		0%{opacity:0}
+		20%{opacity:100}
+		50%{opacity:0}
+		75%{opacity:0}
+		100%{opacity:0}
+	}
+	@keyframes season_q{
+
+		0%{opacity:0}
+		20%{opacity:0}
+		50%{opacity:100}
+		75%{opacity:0}
+		100%{opacity:0}
+	}
+	@keyframes season_d{
+
+		0%{opacity:0}
+		20%{opacity:0}
+		50%{opacity:0}
+		75%{opacity:100}
+		100%{opacity:0}
+	}
+
+
+
+	</style>
+
+
+</head>
+<body>
+
+<!--0. define label: page -->
+<page id="c"> Spring</page>
+<page id="x"> Summer</page>
+<page id="q"> Autome</page>
+<page id="d"> Winter</page>
+
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+    /* self define style save in seperated file: page.css */
+
+    /* !!!3. make each word a page!!!:
+        3.1: define page, html, body
+    */
+    html, body, page{
+
+        height:100%;
+        width: 100%;
+        margin:0; /* body margin */
+    }
+
+
+
+
+    page{
+
+        height: 100%;/* 3.2 define page height*/
+        position: absolute;/* 3.3 define page positon absolute(full screen)!!!, if use center, will not create page*/
+        padding-top:30%; /*postion from top*/
+        /*padding-left: 20%;/*postion from left*/
+        text-align: center;
+        font-size: 150px; /* pic pixl*/
+        /*animation: season 10s infinite;/* animation applied to all pages at same time*/
+    }
+    /* 1. define color and animation for each season */
+    #c{
+        background-color: lightgreen;
+        animation: season_c 7s infinite;
+    }
+
+    #x{
+        background-color red;
+        animation: season_x 7s infinite;
+    }
+
+    #q{
+        /*background-color: yellow;*/
+        /* add background image*/
+        background-image: url('../images/01.jpeg');
+        /* image full screen */
+        background-size: 100% 100%;
+        animation: season_q 7s infinite;
+    }
+
+    #d{
+        background-color: black;
+        color: white; /* font color*/
+        animation: season_d 7s infinite;
+    }
+
+    #e{
+        font-size:36px;
+        display: block;/*another line*/
+        background-color: black;
+        color: white; /* font color*/
+        animation: season_e 7s infinite;
+    }
+
+    /* 2. define change type for each season*/
+    @keyframes season_c{
+
+        0%{opacity:100}
+        25%{opacity:0}
+        50%{opacity:0}
+        75%{opacity:0}
+        100%{opacity:0}
+    }
+
+    @keyframes season_x{
+
+        0%{opacity:0}
+        30%{opacity:100}
+        50%{opacity:0}
+        75%{opacity:0}
+        100%{opacity:0}
+    }
+    @keyframes season_q{
+
+        0%{opacity:0}
+        20%{opacity:0}
+        50%{opacity:100}
+        75%{opacity:0}
+        100%{opacity:0}
+    }
+    @keyframes season_d{
+
+        0%{opacity:0}
+        20%{opacity:0}
+        50%{opacity:0}
+        75%{opacity:100}
+        100%{opacity:0}
+    }
+
+    @keyframes season_e{
+
+        0%{opacity:0}
+        20%{opacity:0}
+        60%{opacity:80}
+        80%{opacity:100}
+        100%{opacity:0}
+    }

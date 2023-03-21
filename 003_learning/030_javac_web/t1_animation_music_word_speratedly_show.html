@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>唐诗一首</title>
+	<style type="text/css">
+
+	/* 1. add pic as background, 
+			1.1 set up in head
+			1.2 setup background size, horizental and vertical-height , and web height;
+	*/
+		body{
+			background-image: url(./images/01.jpeg);
+			background-size: 100% 100%;
+			height:100%;
+		}
+		html{
+			height:100%;
+		}
+		/* 2. add special frame:
+				2.1: setup in head; 
+				2.2: define function name function name is myfirst*/
+		@keyframes headcolorchange{
+						from {background:yellow;}
+						to {background:green;}
+						}
+			/* 2.3: frame function applied:
+				-  on h1, p;
+				- define animation time, and loop time;
+				*/
+		@keyframes myfirst{
+						0%{opacity:100}
+						20%{opacity:0}
+						50%{opacity:0}
+						75%{opacity:0}
+						100%{opacity:0}
+	
+					}
+		/* 时长分配： 0, 50%, 100%, 0%时长时的状态;
+		    each word/lenght: occure in different time phase
+
+		*/
+		@keyframes mysecond{
+						0%{opacity:0}
+						20%{opacity:100}
+						50%{opacity:0}
+						75%{opacity:0}
+						100%{opacity:0}
+					}
+		@keyframes mythird{
+		
+						0%{opacity:0}
+						20%{opacity:0}
+						50%{opacity:100}
+						75%{opacity:0}
+						100%{opacity:0}
+		
+			}
+		@keyframes myfourth{
+				
+						0%{opacity:0}
+						20%{opacity:0}
+						50%{opacity:0}
+						75%{opacity:100}
+						100%{opacity:0}
+					
+					}
+
+
+		h1{
+			animation: headcolorchange 7s infinite; /* animation time: 2s, recycle time: infinite*/
+		}
+		/* define font size and postion for body*/
+		p{
+			font-size: 100px;
+			position: absolute;
+			width: 100%;m
+			text-align: center;
+			/*animation: myfirst 2s infinite; /* animation time: 2; apply to all p contents*/;
+		}
+
+		/* animation applied only to content definedin id, 
+		so these words can show seperately,
+		otherwise, they will show together, overlapped ;
+		animation time: match vedio time:-->one vedio cycle: four lines ;
+			-->define 4 phase for showing each line in different time phase of each cycle
+		*/
+		#h1 {
+
+			animation: myfirst 7s infinite;
+		}
+		#h2 {
+			
+			animation: mysecond 7s infinite;
+		}
+		#h3
+		{
+			
+			animation: mythird 7s infinite;
+		}
+		#h4
+		{
+			
+			animation: myfourth 7s infinite;
+		}
+	
+
+
+	</style>
+
+
+
+</head>
+<body> 
+<!-- 3. add music:
+	control button, and "autoplay or not, loop times
+<audio src="./wav/bgm.m4a", controls="constrols" autoplay="autoplay" loop="loop">
+-->
+<audio id="bgm" src="./wav/bgm.m4a"  controls="constrols" autoplay="autoplay" loop="loop" >
+</audio>
+
+
+<h1>静夜思</h1>
+<!-- apply only on some words: define id for words, and apply function to id -->
+<p id="h1">床前明月光,</p>
+<p id="h2">疑是地上霜,</p>
+<p id="h3">举头望明月,</p>
+<p id="h4">低头思故乡,</p>
+</body>
+</html>
+
+
+<!--
+<script>
+		function toggleSound() {
+    		var music = document.getElementById("bgm");//获取ID  
+            console.log(music);
+            console.log(music.paused);
+        	if (music.paused) { //判读是否播放  
+	            music.paused=false;
+	            music.play(); //没有就播放 
+	        	}         
+		}
+/*setInterval("toggleSound()",1);*/
+	setInterval("toggleSound()",1);
+</script>
+-->
