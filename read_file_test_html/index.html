@@ -12,7 +12,7 @@
 </body>
 <script>
     $.getJSON("./data_test.json", function(e){
-        document.getElementById("h").innerHTML = e;
+        document.getElementById("h").innerHTML = Object.keys(e);
         ;
     })
 </script>
