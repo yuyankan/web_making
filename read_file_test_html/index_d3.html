@@ -17,16 +17,11 @@
         </p>
     </body>
     <script>
-        data = d3.csv("data_test.csv", function(d) {
-                return {
-                    platform: d.platform,
- 
-                     } 
-   filtered = data.filter(function(d) { return d});
-   document.getElementById("h").innerHTML = filtered;
+        d3.csv("data_test.csv", ,function(data){
+        document.getElementById("h").innerHTML = data;
+        })
   
-      });   
-   
+      
      
     </script>
 </html>
