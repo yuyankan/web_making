@@ -18,11 +18,22 @@
     </body>
     <script>
         d3.csv("data_test.csv").then(function(data){
-        document.getElementById("h").innerHTML = data.filter(function(d){
-       return ((d.platform=="c") && (d.vin="h9"))
-            });
-        })
-  
+            data.filter(function(d){
+            return d.platform=="c"
+                            })
+            })
+            .then(function(d){
+                d.filter(function(e){
+                return e.vin == "h9"
+                })
+
+            })
+            .then(function(e){
+
+            document.getElementById("h").innerHTML = e
+            })
+
+
       
      
     </script>
