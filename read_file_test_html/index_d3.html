@@ -12,13 +12,7 @@
 </body>
 <script>
 
-   csv_data = d3.csv('data_test.csv', function(consdata){
-                               var filtercitydata = consdata.filter(function(d){
-                                 if (d['platform']=='c'){
-                                    return d;
-                                 }  
-                                 })
-      })
+   csv_data = d3.csv('data_test.csv')
 
    document.getElementById("h").innerHTML = csv_data;
 
