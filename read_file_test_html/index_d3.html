@@ -13,12 +13,14 @@
 <script>
 
    d3.csv('data_test.csv', function(csv){
-     document.getElementById("h").innerHTML = csv.platform;
-   }
-         )
+                               var filtercitydata = csv.filter(function(d){
+                                 if (d['platform']=='c') {
+                                    document.getElementById("h").innerHTML = d;
+                                 }  
+                                 })
+                               
+      })
 
-  
- 
    
 
 </script>
