@@ -19,9 +19,7 @@
     <script>
         d3.csv("data_test.csv").then(function(data){
         document.getElementById("h").innerHTML = data.filter(function(d){
-        if(d.platform=="c") && (d.vin="h9"){
-        return d;
-            }
+       return ((d.platform=="c") && (d.vin="h9"))
             });
         })
   
