@@ -19,10 +19,8 @@
     <script>
         data = d3.csv("data_test.csv", function(d) {
                 return {
-                    CountryName: d.CountryName,
-                    IndicatorName: d.IndicatorName,
-                    Year: d.Year,
-                    Value: +d.Value
+                    platform: d.platform,
+ 
                      } 
    filtered = data.filter(function(d) { return d.platform === "c"});
    document.getElementById("h").innerHTML = filtered;
