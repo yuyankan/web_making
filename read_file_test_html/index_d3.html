@@ -12,9 +12,12 @@
 </body>
 <script>
 
-   csv_data = d3.csv('data_test.csv')
+   d3.csv('data_test.csv', function(csv){
+     document.getElementById("h").innerHTML = csv;
+   }
+         )
 
-   document.getElementById("h").innerHTML = csv_data;
+  
  
    
 
