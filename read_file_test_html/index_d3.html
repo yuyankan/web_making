@@ -17,7 +17,7 @@
         </p>
     </body>
     <script>
-        d3.csv("data_test.csv", ,function(data){
+        d3.csv("data_test.csv").then(function(data){
         document.getElementById("h").innerHTML = data;
         })
   
