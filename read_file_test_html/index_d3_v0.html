@@ -31,8 +31,8 @@
 
             })
             .then(function(e){
-                document.getElementById("h1").innerHTML = e;
-                document.getElementById("h2").innerHTML = Object.keys(e[0]);
+                document.getElementById("h1").innerHTML = JSON.stringify(e);
+                document.getElementById("h2").innerHTML = JSON.stringify(e[0]);
                 document.getElementById("h3").innerHTML = Object.values(e[0]);
             });
 
