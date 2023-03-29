@@ -60,10 +60,10 @@
             d3.csv(file)
                 .then(function(csvdata){
                     return csvdata.filter(function(d){
-                        return d.platform==platform;
+                        return d.platform=="cma";
                                     })
                     })
-                .then(function(csvplatform){
+               /* .then(function(csvplatform){
                         return csvplatform.filter(function(d){
                             return d.software_version == software;
                             })
@@ -74,7 +74,7 @@
                             return d.time_week== time;
                             })
 
-                    })
+                    })*/
                 .then(function(csv_filtered){
 
                     document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
