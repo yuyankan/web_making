@@ -52,7 +52,7 @@
         var pie_software = document.querySelector(".pie #software");
         var pie_time = document.querySelector(".pie #time");
         const error_items = Object();
-        pie_data("data_test.csv", pie_platform pie_software, pie_time);
+        pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
 
         document.getElementById("h").innerHTML =  Object.values(error_items[0]);
         };
@@ -86,7 +86,7 @@
                         };
                     })
             };
-      
+
      
     </script>
 </html>
