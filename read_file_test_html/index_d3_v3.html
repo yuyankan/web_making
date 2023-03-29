@@ -52,14 +52,16 @@
          
         document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
         //try get columns array
-         var platform_column =[]
-         csv_filtered.then(data){
-            data.map(function(d){
-                platform_column.push(d.platform);
-                });
-         };
+        var platform_column =[]
+        csv_filtered.then(
+            function(data){
+                data.map(function(d){
+                    platform_column.push(d.platform);
+                                    });
+
+            });
          
-         document.getElementById("t2").innerHTML = platform_column;
+        document.getElementById("t2").innerHTML = platform_column;
 
         };
 
