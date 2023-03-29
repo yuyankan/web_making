@@ -20,20 +20,20 @@
     <script>
         d3.csv("data_test.csv")
             .then(function(data){
-                data.filter(function(d){
+                return data.filter(function(d){
                 return d.platform=="cma"
                                 })
                 })
             .then(function(d){
-                d.filter(function(e){
+                return d.filter(function(e){
                 return e.vin == "h1"
                 })
 
             })
             .then(function(e){
-            document.getElementById("h1").innerHTML = e;
-            document.getElementById("h2").innerHTML = Object.keys(e[0]);
-            document.getElementById("h3").innerHTML = Object.values(e[0]);
+                document.getElementById("h1").innerHTML = e;
+                document.getElementById("h2").innerHTML = Object.keys(e[0]);
+                document.getElementById("h3").innerHTML = Object.values(e[0]);
             });
 
 
