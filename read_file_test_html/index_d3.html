@@ -39,6 +39,7 @@
 
     </body>
     <script>
+        
         const pie_button= document.querySelector(".pie #search");
 
 
@@ -52,7 +53,7 @@
         const error_items = Object();
         pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
 
-        document.getElementById("h").innerHTML =  Object.values(error_items[0]);
+        document.getElementById("h").innerHTML =  error_items;
         };
 
 
@@ -77,13 +78,13 @@
 
                     })
                 .then(function(csv_filtered){
-                    Object.keys(csv_filtered[0]).map(pie_mymap);
-
-                    function pie_mymap(num){
-                        error_items[num] = 0;
-                        };
+                     error_items = csv_filtered;
+                       
                     })
             };
+
+     
+    
 
      
     </script>
