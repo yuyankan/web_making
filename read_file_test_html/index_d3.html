@@ -68,12 +68,12 @@
 
         function pie_data(file, platform, sofware, time){
             d3.csv(file)
-                .then(function(csvdata){
+                /*.then(function(csvdata){
                     return csvdata.filter(function(d){
                         return d.platform=="cma";
                                     })
                     })
-               /* .then(function(csvplatform){
+                .then(function(csvplatform){
                         return csvplatform.filter(function(d){
                             return d.software_version == software;
                             })
