@@ -42,6 +42,7 @@
             axisLine: {
                 show: false
             }
+            
         }],
         yAxis: [{
             type: "value",
@@ -220,8 +221,6 @@
 const pie_button= document.querySelector(".pie #search");
 
 
-
-
 pie_button.addEventListener("click",()=>{pie_time.value="cma";});
 
 function pie_data(file, platform, sofware, time){
@@ -253,18 +252,10 @@ function pie_data(file, platform, sofware, time){
     };
 
 
-            
-
-
-           
-
-const b = {}
-a.map(mymap)
 
 
 
-
-(function mypie() {
+function mypie() {
     // 基于准备好的dom，初始化echarts实例
 
     var myChart = echarts.init(document.querySelector(".pie .chart"));
@@ -275,16 +266,9 @@ a.map(mymap)
     const error_items = Object();
     pie_data("data_test.csv", pie_platform pie_software, pie_time);
 
-//
+
     option = {
-        tooltip: {
-            trigger: "item",
-            formatter: "{a} <br/>{b}: {c} ({d}%)",
-            position: function(p) {
-                //其中p为当前鼠标的位置
-                return [p[0] + 10, p[1] - 10];
-            }
-        },
+        tooltip: {},
         legend: {
             top: "90%",
             itemWidth: 10,
@@ -347,7 +331,7 @@ a.map(mymap)
     window.addEventListener("resize", function() {
         myChart.resize();
     });
-})();
+};
 // 学习进度柱状图模块
 (function() {
     // 基于准备好的dom，初始化echarts实例
