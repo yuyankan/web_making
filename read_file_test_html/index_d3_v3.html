@@ -50,20 +50,6 @@
         var pie_software = document.querySelector(".pie #software");
         var pie_time = document.querySelector(".pie #time");
         pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
-         
-        document.getElementById("t2").innerHTML = JSON.stringify(csv_filtered);
-            
-        /*try get columns array
-        var platform_column =[]
-        csv_filtered.then(
-            function(data){
-                data.map(function(d){
-                    platform_column.push(d.platform);
-                                    });
-
-            });
-         
-        document.getElementById("t2").innerHTML = platform_column;*/
 
         };
 
@@ -84,14 +70,15 @@
                         return csv_ps.filter(function(d){
                             return d.date_week== date_week;
                             })
-
                     })
                 .then(function(csv_f){
-                    csv_filtered = csv_f;
+                    columns_array = Object.keys(csv_f[0]);
+                    
+                    /*csv_filtered = csv_f;
                     document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
                     
 
-                   /*document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
+                   document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
                     document.getElementById("t2").innerHTML = Object.keys(csv_filtered[0]);*/
                         })
              
