@@ -47,8 +47,7 @@
         var pie_platform = document.querySelector(".pie #platform");
         var pie_software = document.querySelector(".pie #software");
         var pie_time = document.querySelector(".pie #time");
-        let error_items;
-        pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
+        let error_items = pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
         document.getElementById("t1").innerHTML = JSON.stringify(error_items)
 
         };
@@ -74,7 +73,7 @@
                     })
                 .then(function(csv_filtered){
 
-                   error_items = csv_filtered;
+                   return csv_filtered;
                         })
              
                  
