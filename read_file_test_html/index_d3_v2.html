@@ -56,25 +56,25 @@
 
 
 
-        function pie_data(file, platform, software, time){
+        function pie_data(file, platform, soft_version, date_week){
             d3.csv(file)
                 .then(function(csvdata){
                     return csvdata.filter(function(d){
                         return d.platform==platform;
                                     })
                     })
-              /*.then(function(csvplatform){
+              .then(function(csvplatform){
                         return csvplatform.filter(function(d){
-                            return d.software_version == 1;
+                            return d.soft_version == soft_version;
                             })
 
                     })
                  .then(function(csv_ps){
                         return csv_ps.filter(function(d){
-                            return d.time_week== time;
+                            return d.date_week== date_week;
                             })
 
-                    })*/
+                    })
                 .then(function(csv_filtered){
 
                     document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
