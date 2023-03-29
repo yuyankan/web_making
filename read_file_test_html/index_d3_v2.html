@@ -75,7 +75,7 @@
                 .then(function(csv_filtered){
 
                    document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
-                    document.getElementById("t2").innerHTML = csv_filtered.columns;
+                    document.getElementById("t2").innerHTML = JSON.stringify(csv_filtered[0]);
                         })
              
                  
