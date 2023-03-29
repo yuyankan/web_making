@@ -46,6 +46,7 @@
     <script>
         
         const pie_button= document.querySelector(".pie #search");
+        const error_items = Object();
 
 
         pie_button.addEventListener("click",mypie);
@@ -55,13 +56,14 @@
         var pie_platform = document.querySelector(".pie #platform");
         var pie_software = document.querySelector(".pie #software");
         var pie_time = document.querySelector(".pie #time");
-        const error_items = Object();
+        
         pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
+        document.getElementById("t3").innerHTML = 
 
         /*document.getElementById("h1").innerHTML =  error_items;
         var data_test = JSON.stringify(error_items)
         document.getElementById("t2").innerHTML = data_test ;
-        document.getElementById("h3").innerHTML =  eval('('+data_test +')');*/
+        document.getElementById("t3").innerHTML =  JSON.stringify(error_items);
         };
 
 
@@ -88,6 +90,7 @@
                 .then(function(csv_filtered){
                      
                     document.getElementById("t2").innerHTML = JSON.stringify(csv_filtered);
+                    error_items = csv_filtered
                        
                     })
             };
