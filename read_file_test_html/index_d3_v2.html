@@ -24,8 +24,8 @@
         <label for="software">Software Version</label>
         <select id="software" class="software">
             <option value="">------</option>
-            <option value="01">01</option>
-            <option value="02">02</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
         </select>
 
          <label for="time">Time range/week</label>
@@ -63,13 +63,13 @@
                         return d.platform==platform;
                                     })
                     })
-               /* .then(function(csvplatform){
+              .then(function(csvplatform){
                         return csvplatform.filter(function(d){
                             return d.software_version == software;
                             })
 
                     })
-                .then(function(csv_ps){
+                /* .then(function(csv_ps){
                         return csv_ps.filter(function(d){
                             return d.time_week== time;
                             })
