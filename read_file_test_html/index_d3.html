@@ -58,12 +58,13 @@
         var pie_time = document.querySelector(".pie #time");
         
         pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
-        document.getElementById("t3").innerHTML = 
+        document.getElementById("t3").innerHTML =  JSON.stringify(error_items);
+     
 
         /*document.getElementById("h1").innerHTML =  error_items;
         var data_test = JSON.stringify(error_items)
-        document.getElementById("t2").innerHTML = data_test ;
-        document.getElementById("t3").innerHTML =  JSON.stringify(error_items);
+        document.getElementById("t2").innerHTML = data_test ;*/
+        
         };
 
 
