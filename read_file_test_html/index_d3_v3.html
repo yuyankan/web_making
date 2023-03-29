@@ -48,8 +48,18 @@
         var pie_platform = document.querySelector(".pie #platform");
         var pie_software = document.querySelector(".pie #software");
         var pie_time = document.querySelector(".pie #time");
-        pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
-        
+        let csv_filtered =  pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
+         
+        document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
+        //try get columns array
+         var platform_column =[]
+         csv_filtered.then(data){
+            data.map(function(d){
+                platform_column.push(d.platform);
+                });
+         };
+         
+         document.getElementById("t2").innerHTML = platform_column;
 
         };
 
@@ -72,11 +82,11 @@
                             })
 
                     })
-                .then(function(csv_filtered){
+                /*.then(function(csv_filtered){
 
                    document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
                     document.getElementById("t2").innerHTML = Object.keys(csv_filtered[0]);
-                        })
+                        })*/
              
                  
             };
