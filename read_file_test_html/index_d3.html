@@ -13,9 +13,9 @@
     </head>
     <body>
         <h1>HI</h1>
-        <p id="h1"></p>
-        <p id="h2"></p>
-        <p id="h3"></p>
+        <p id="t1"></p>
+        <p id="t2"></p>
+        <p id="t3"></p>
      
 
         <div class="pie">
@@ -58,10 +58,10 @@
         const error_items = Object();
         pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
 
-        document.getElementById("h1").innerHTML =  error_items;
+        /*document.getElementById("h1").innerHTML =  error_items;
         var data_test = JSON.stringify(error_items)
-        document.getElementById("h2").innerHTML = data_test ;
-        document.getElementById("h3").innerHTML =  eval('('+data_test +')');
+        document.getElementById("t2").innerHTML = data_test ;
+        document.getElementById("h3").innerHTML =  eval('('+data_test +')');*/
         };
 
 
@@ -86,7 +86,8 @@
 
                     })*/
                 .then(function(csv_filtered){
-                     error_items = csv_filtered;
+                     
+                    document.getElementById("t2").innerHTML = JSON.stringify(csv_filtered);
                        
                     })
             };
