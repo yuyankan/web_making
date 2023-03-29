@@ -56,7 +56,7 @@
 
 
 
-        function pie_data(file, platform, sofware, time){
+        function pie_data(file, platform, software, time){
             d3.csv(file)
                 .then(function(csvdata){
                     return csvdata.filter(function(d){
