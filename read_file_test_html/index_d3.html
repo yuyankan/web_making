@@ -53,7 +53,7 @@
         const error_items = Object();
         pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
 
-        document.getElementById("h").innerHTML =  error_items;
+        document.getElementById("h").innerHTML =  Object.keys(error_items[0]);
         };
 
 
