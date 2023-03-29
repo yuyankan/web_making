@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>
+                Load Json
+            </title>
+            <script src="https://d3js.org/d3.v7.min.js">
+            </script>
+        </meta>
+    </head>
+    <body>
+        <h1>HI</h1>
+        <p id="t1"></p>
+
+        <div class="pie">
+        <h2>Pie Quality Item </h2>
+        <label for="platform"  style="white">Platform Selection</label>
+        <select id="platform"  class="platform">
+            <option value="">------</option>
+            <option value="cma">CMA</option>
+            <option value="spa">SPA</option>
+        </select>
+        <label for="software">Software Version</label>
+        <select id="software" class="software">
+            <option value="">------</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+        </select>
+
+         <label for="time">Time range/week</label>
+        <input type="week" value="---" name="week" id="time" class="pie_time"></input>
+            
+        </select>
+        <button id="search">Search</button>
+        </div>
+
+
+    </body>
+    <script>
+        const pie_button= document.querySelector(".pie #search");
+
+
+        pie_button.addEventListener("click",mypie);
+
+        function mypie() {
+        // 基于准备好的dom，初始化echarts实例
+
+        var myChart = echarts.init(document.querySelector(".pie .chart"));
+
+        var pie_platform = document.querySelector(".pie #platform");
+        var pie_software = document.querySelector(".pie #software");
+        var pie_time = document.querySelector(".pie #time");
+        const error_items = Object();
+        pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
+
+         =  Object.values(error_items[0]);
+        };
+
+
+
+        function pie_data(file, platform, sofware, time){
+            d3.csv(file)
+                .then(function(csvdata){
+                    return csvdata.filter(function(d){
+                        return d.platform==platform;
+                                    })
+                    })
+                .then(function(csvplatform){
+                        return csvplatform.filter(function(d){
+                            return d.software_version == software;
+                            })
+
+                    })
+                .then(function(csv_ps){
+                        return csv_ps.filter(function(d){
+                            return d.time_week== time;
+                            })
+
+                    })
+                .then(function(csv_filtered){
+
+                    document.getElementById("t1").innerHTML = JSON.stringify(csv_filtered);
+                        })
+                 
+            };
+
+
+
+      
+     
+    </script>
+</html>
