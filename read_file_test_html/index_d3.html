@@ -70,7 +70,7 @@
             d3.csv(file)
                 .then(function(csvdata){
                     return csvdata.filter(function(d){
-                        return d.platform==platform;
+                        return d.platform=="cma";
                                     })
                     })
                /* .then(function(csvplatform){
