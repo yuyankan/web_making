@@ -1,0 +1,33 @@
+<!-- 
+div标签中id、class属性的使用与区别
+DIV+CSS布局中在HTML代码中我们常常看到div标签、span标签等html标签频繁使用，而div id和div class最常见的单词。在HTML中，span与div元素被用来表达一个逻辑区块。div在Dreamweaver软件中也叫“层”，用于标示块级元素，而span标示行内元素。
+
+如：
+
+<div id="header"></div> 
+<div class="abc"></div> 
+类似在这样的在div标签中通过使用id和class来调用对应CSS样式。
+
+DIV的ID属性和CLASS属性有什么区别呢?
+
+1、语法区别
+id对应CSS是用样式选择符“#”（井号）；
+class对应CSS是用样式选择符“.”(英文半角输入句号)。
+
+<div id="header"></div> 
+<div class="abc"></div> 
+对应CSS应该是：
+
+#header{...} 
+.abc{...} 
+/* css注释说明：这里以省略号替代CSS样式内容 */ 
+2、使用规定区别
+id属性，只能被一个元素调用（以“#”选择符命名CSS样式在一个页面只能使用调用一次）
+class类标记，可以用于被多个元素调用(以“.”选择符命名样式可以一个页面使用多次)
+
+id：在同一个页面，只可以被调用一次，在CSS里用“#”表示。
+class：是类标签，在同一个页面可以调用无数次（没限制的），在CSS里用“.”表示。
+
+id就像一个人的身份证，用于识别这个div的，class就像人身上穿的衣服，用于定义这个div的样式。一般一个网页不设二个或二个以上同id的div，但class可以多个div用同一个class标签。
+
+-->

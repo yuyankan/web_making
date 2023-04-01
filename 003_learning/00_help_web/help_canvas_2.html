@@ -1,0 +1,64 @@
+<!-- 
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <style>
+    	<body>{
+    	margin: 0;
+    	overflow:hidden;
+    	}
+    </style>
+
+
+
+
+</head>
+<body>
+    <canvas class="myCanvas" id="canvas" style="margin:0 auto;">
+        The current browser does not support Canvas, can replace the browser a try! 
+        <!--在 canvas 标签内，你可以放置一些反馈信息，如果用户的浏览器不支持画布功能，这些内容就会显示出来。 -->
+    </canvas>
+
+    <script>
+
+        
+            var canvas = document.getElementById('canvas');// or use var canvas = document.querySelector('.myCanvas');
+
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = 'rgb(255, 0, 0)';
+			ctx.fillRect(50, 50, 100, 150);
+
+			ctx.fillStyle = 'rgb(0, 255, 0)';
+			ctx.fillRect(75, 75, 100, 100);
+
+			ctx.fillStyle = 'rgba(255, 0, 255, 0.75)';//通过指定半透明的颜色来绘制半透明的图形，比如使用 rgba()。 a 指定了“α 通道”的值，也就是颜色的透明度。
+			ctx.fillRect(25, 100, 175, 50);
+
+			function checkGuess() {
+  			alert('I am a placeholder');
+			}
+			checkGuess();
+
+			ctx.strokeStyle = 'rgb(255, 255, 255)';
+			ctx.strokeRect(25, 25, 175, 200);
+			ctx.lineWidth = 5;
+
+			ctx.fillStyle = 'rgb(255, 0, 0)';
+			ctx.beginPath();
+			ctx.moveTo(50, 50);
+			// 绘制路径
+			ctx.fill();
+
+ 
+        
+    </script>
+</body>
+</html>

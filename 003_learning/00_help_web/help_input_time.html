@@ -1,0 +1,41 @@
+<!-- 
+
+
+-->
+<!DOCTYPE html>
+<html lang="en"> <!--lang: language -->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+	<label for="bday-month">What month were you born in?</label>
+	<input id="bday-month" type="month" name="bday-month" /><br/>
+
+	<label for="date">Select time_date</label>
+	Select time <input type="date" name="date" id="date" min="2013-06-01", step=1><br/>
+
+
+	<label for="month">Select time_month</label>
+	<input type="month" value="2018-05" name="month" id="month", step=1><br/>
+
+	<label for="week">Select time_week</label>
+	<input type="week" value="2019-W12" name="week" id="week" min="2019-W10" , class="test1"><br/>
+	<p class="t1"></p>
+
+	
+</body>
+<script>
+	var dt = new Date();
+	const weekControl = document.querySelector('input[type="week"]');
+	weekControl.value = "2019-W19";
+	const t12 = document.querySelector(".t1");
+	t12.textContent = 'hi';
+	t12.style.backgroundColor = 'green';
+	
+
+	</script>
+</html>

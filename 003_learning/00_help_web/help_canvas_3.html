@@ -1,0 +1,62 @@
+<!-- 
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <style>
+    	<body>{
+    	margin: 0;
+    	overflow:hidden;
+    	}
+    </style>
+
+
+
+
+</head>
+<body>
+    <canvas class="myCanvas" id="canvas" style="margin:0 auto;">
+        The current browser does not support Canvas, can replace the browser a try! 
+        <!--在 canvas 标签内，你可以放置一些反馈信息，如果用户的浏览器不支持画布功能，这些内容就会显示出来。 -->
+    </canvas>
+
+    <script>
+
+        
+            var canvas = document.getElementById('canvas');// or use var canvas = document.querySelector('.myCanvas');
+
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            var ctx = canvas.getContext('2d');
+
+            
+
+			ctx.fillStyle = 'rgb(255, 0, 0)';
+			ctx.beginPath();//在钢笔当前所在位置开始绘制一条路径
+			ctx.moveTo(50, 50);//起点; 将钢笔移动至另一个坐标点，不记录、不留痕迹，只将钢笔“跳”至新位置。
+			// 绘制路径
+			ctx.lineTo(150, 50);// 首先绘制一条直线，终点坐标为 (150, 50),此时路径沿 x 轴向右行走 100 像素。
+			var triHeight = 50 * Math.tan(degToRad(60));
+			ctx.lineTo(100, 50+triHeight);
+			ctx.lineTo(50, 50);//下一条线的终点坐标为绘制整个三角形的起点坐标。
+			ctx.fill();//通过为当前所绘制路径的区域填充颜色来绘制一个新的填充形状。
+
+			ctx.fillStyle = 'rgb(0, 0, 255)';
+			ctx.beginPath();
+			ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
+			ctx.fill();
+	
+
+			function degToRad(degrees) {
+			  return degrees * Math.PI / 180;
+			};
+
+ 
+        
+    </script>
+</body>
+</html>

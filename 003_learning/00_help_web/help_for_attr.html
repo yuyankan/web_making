@@ -1,0 +1,60 @@
+<!-- 
+
+HTML ＜label＞标签＜/label＞中的“ for”属性有什么作用＜label＞？＜/label＞
+
+
+本文翻译自：What does “for” attribute do in HTML tag?
+
+I wonder what is the difference between the following two code snippets: 我想知道以下两个代码段之间的区别是什么：
+
+<label>Input here : </label>
+<input type='text' name='theinput' id='theinput'/>
+and 和
+
+<label for='theinput'>Input here : </label>
+<input type='text' name='theinput' id='theinput'/>
+I'm sure it does something when you use a special JavaScript library, but apart from that, does it validate the HTML or required for some other reason? 我确定当您使用特殊的JavaScript库时，它会执行某些操作，但是除此之外，它是否可以验证HTML或由于其他原因而需要？
+
+#1楼
+参考：https://stackoom.com/question/1FL6O/HTML-label-标签-label-中的-for-属性有什么作用-label-label
+
+#2楼
+<label>标记的for属性应等于相关元素的id属性，以将它们绑定在一起。
+
+#3楼
+The <label> tag allows you to click on the label, and it will be treated like clicking on the associated input element. <label>标记允许您单击标签，将其视为与单击关联的输入元素一样。 There are two ways to create this association: 有两种创建此关联的方法：
+
+One way is to wrap the label element around the input element: 一种方法是将label元素包装在input元素周围：
+
+<label>Input here:
+    <input type='text' name='theinput' id='theinput'>
+</label>
+The other way is to use the for attribute, giving it the ID of the associated input: 另一种方法是使用for属性，为其提供关联输入的ID：
+
+<label for="theinput">Input here:</label>
+<input type='text' name='whatever' id='theinput'>
+This is especially useful for use with checkboxes and buttons, since it means you can check the box by clicking on the associated text instead of having to hit the box itself. 这对于与复选框和按钮一起使用特别有用，因为这意味着您可以通过单击关联的文本来选中该框，而不必自己点击该框。
+
+Read more about this element in MDN . 在MDN中阅读有关此元素的更多信息。
+
+#4楼
+The for attribute associates the label with a control element, as defined in the description of label in the HTML 4.01 spec. for属性将标签与控件元素相关联，如HTML 4.01规范的label说明中所定义。 This implies, among other things, that when the label element receives focus (eg by being clicked on), it passes the focus on to its associated control. 这尤其意味着，当label元素获得焦点（例如，通过单击）时，它将焦点传递给与其关联的控件。 The association between a label and a control may also be used by speech-based user agents, which may give the user a way to ask what the associated label is, when dealing with a control. 标签和控件之间的关联也可以由基于语音的用户代理使用，当处理控件时，基于语音的用户代理可以为用户提供一种询问相关标签是什么的方式。 (The association may not be as obvious as in visual rendering.) （这种关联可能不像视觉渲染那样明显。）
+
+In the first example in the question (without the for ), the use of label markup has no logical or functional implication – it's useless, unless you do something with it in CSS or JavaScript. 在问题的第一个示例中（不带for ）， label标记的使用没有逻辑或功能上的含义–它无用，除非您在CSS或JavaScript中对其进行了处理。
+
+HTML specifications do not make it mandatory to associate labels with controls, but Web Content Accessibility Guidelines (WCAG) 2.0 do. HTML规范没有强制性要求将标签与控件关联，但是Web内容可访问性指南（WCAG）2.0确实如此。 This is described in the technical document H44: Using label elements to associate text labels with form controls , which also explains that the implicit association (by nesting eg input inside label ) is not as widely supported as the explicit association via for and id attributes, 技术文档H44中对此进行了描述：使用标签元素将文本标签与表单控件相关联 ，该文档还解释了隐式关联（通过嵌套，例如在label内部input ）不如for和id属性的显式关联得到广泛支持，
+
+#5楼
+In a nutshell what it does is refer to the id of the input, that's all: 简而言之，它是指输入的id ，仅此而已：
+
+<label for="the-id-of-the-input">Input here:</label>
+<input type="text" name="the-name-of-input" id="the-id-of-the-input">
+#6楼
+The for attribute shows that this label stands for related input field, or check box or radio button or any other data entering field associated with it. for属性显示此标签代表相关的输入字段，复选框或单选按钮或与其关联的任何其他数据输入字段。 for example 例如
+
+    <li>
+<label>{translate:blindcopy}</label>
+            <a class="" href="#" title="{translate:savetemplate}" onclick="" ><i class="fa fa-list" class="button" ></i></a> &nbsp 
+            <input type="text" id="BlindCopy" name="BlindCopy" class="splitblindcopy" />
+    </li>
+-->

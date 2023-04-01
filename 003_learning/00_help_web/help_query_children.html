@@ -1,0 +1,68 @@
+<!-- 
+java script 选择器_JavaScript选择器
+ref:
+https://blog.csdn.net/weixin_36289813/article/details/114828560?ops_request_misc=&request_id=&biz_id=102&utm_term=querySelector.children%5B%5D,%20java&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-114828560.142^v75^wechat_v2,201^v4^add_ask,239^v2^insert_chatgpt&spm=1018.2226.3001.4187
+
+
+1：父元素选子元素：
+
+var omsg = document.querySelector(".msg");//选中父元素
+
+console.log(omsg.children);//打印出父元素下的所有子元素
+
+2：子元素选父元素：
+
+var osbox = document.querySelector(".sbox");//选中有父元素的子元素
+
+console.log(osbox.parentNode);//打印出打的父元素
+
+3：选中第一个子元素：
+
+var omsg = document.querySelector(".msg");//选中父元素
+
+console.log(omsg.firstElementChild)；//打印出当前选择的父元素下的第一个子元素
+
+4：选中最后一个子元素：
+
+var omsg = document.querySelector(".msg");
+
+console.log(omsg.lastElementChild)//显而易见，frist是第一个，那么last是最后一个
+
+5：选中上一个兄弟元素：
+
+var omsg = document.querySelector(".msg");//选中一个元素
+
+console.log(omsg.previousElementSibling)//打印出和它同级的上一个元素(上一个兄弟元素)
+
+6：选中下一个兄弟元素：
+
+var omsg = document.querySelector(".msg");//选中一个元素
+
+console.log(omsg.nextElementSibling)//打印出和它同级的下一个元素(下一个兄弟元素)
+
+其他节点选择器：
+
+父选子：var obox = document.querySelector(".box")
+
+console.log(obox.childNodes)
+
+上一个兄弟：var obox = document.querySelector(".box")
+
+console.log(obox.previousSibling)
+
+下一个兄弟：var obox = document.querySelector(".box")
+
+console.log(obox.nextSibling)
+
+第一个子：var obox = document.querySelector(".box")
+
+console.log(obox.firstChild)
+
+最后一个子：var obox = document.querySelector(".box")
+
+console.log(obox.lastChild)//和元素节点选择器比较，其他节点选择器的关系选择只是在打印元素时少了一个element，特殊的在父选子时单词有所改变，
+
+要注意区分。自习观察就能看到他们相似而又有所区别的地方，这里就不一一分析了
+
+
+-->

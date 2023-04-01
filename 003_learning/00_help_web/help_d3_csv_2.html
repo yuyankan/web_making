@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Load Json</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+ 
+<body>
+    <h1>HI</h1>
+    <p id='h'></p>
+    <pre id="csv">foo,bar,baz,foofoo,foobar,foobaz,barfoo,barbar,barbaz,bazfoo,bazbar,bazbaz
+      1,2,5,4,3,5,6,5,7,3,4,3
+      3,4,2,8,7,6,5,6,4,3,5,4
+      8,7,9,6,5,6,4,3,4,2,9,8</pre>
+</body>
+<script>
+
+   var data = d3.csvParse(d3.select("#csv").text());
+   var myColumns = data.rows.splice(0, 2);
+   var filteredData = data.map(function(d) {
+     for (var key in d) {
+       if (myColumns.indexOf(key) === -1) delete d[key];
+     }
+     return d;
+   })
+
+   document.getElementById("h").innerHTML = myColumns
+   
+
+</script>
+</html>

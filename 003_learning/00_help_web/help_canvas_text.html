@@ -1,0 +1,55 @@
+<!-- 
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <style>
+    	<body>{
+    	margin: 0;
+    	overflow:hidden;
+    	}
+    </style>
+
+
+
+
+</head>
+<body>
+    <canvas class="myCanvas" id="canvas" style="margin:0 auto;">
+        The current browser does not support Canvas, can replace the browser a try! 
+        <!--在 canvas 标签内，你可以放置一些反馈信息，如果用户的浏览器不支持画布功能，这些内容就会显示出来。 -->
+    </canvas>
+
+    <script>
+
+        
+            var canvas = document.getElementById('canvas');// or use var canvas = document.querySelector('.myCanvas');
+
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            var ctx = canvas.getContext('2d');
+            //fillText() ：绘制有填充色的文本。
+			//strokeText()：绘制文本外边框（描边）。
+
+			ctx.strokeStyle = 'black';
+			ctx.lineWidth = 1;
+			ctx.font = '36px arial';
+			ctx.strokeText('Canvas text1', 50, 50);
+
+			ctx.fillStyle = 'red';
+			ctx.font = '48px georgia';
+			ctx.fillText('Canvas text', 50, 150);
+
+            
+
+
+
+ 
+        
+    </script>
+</body>
+</html>

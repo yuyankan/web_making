@@ -1,0 +1,69 @@
+<!-- 
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <style>
+    	<body>{
+    	margin: 0;
+    	overflow:hidden;
+    	}
+    </style>
+
+
+
+
+</head>
+<body>
+    <canvas class="myCanvas" id="canvas" style="margin:0 auto;">
+        The current browser does not support Canvas, can replace the browser a try! 
+        <!--在 canvas 标签内，你可以放置一些反馈信息，如果用户的浏览器不支持画布功能，这些内容就会显示出来。 -->
+    </canvas>
+
+    <script>
+
+        
+            var canvas = document.getElementById('canvas');// or use var canvas = document.querySelector('.myCanvas');
+
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            var ctx = canvas.getContext('2d');
+            //img
+            var image = new Image();
+			image.src = '01.jpeg';
+			//这里使用 Image() 构造器创建了一个新的 HTMLImageElement 对象。返回对象的类型与非空 <img> 元素的引用是一致的。然后将它的 src 属性设置为 Firefox 的图标。此时浏览器将开始载入这张图片。//
+
+			//用 drawImage() 函数来嵌入图片，应确保图片先载入完毕，否则运行会出错。可以通过 onload 事件处理器来达成，该函数只在图片调用完毕后才会调用。//
+			image.onload = function() {
+  			ctx.drawImage(image, 50, 50);
+  			
+  			//尝试用 drawImage() 函数来嵌入图片，应确保图片先载入完毕，否则运行会出错。可以通过 onload 事件处理器来达成，该函数只在图片调用完毕后才会调用
+
+  			/*参数 2、3 表示裁切部分左上顶点的坐标，参考原点为原图片本身左上角的坐标。原图片在该坐标左、上的部分均不会绘制出来。
+				参数 4、5 表示裁切部分的长、宽。
+				参数 6、7 表示裁切部分左上顶点在画布中的位置坐标，参考原点为画布左上顶点。
+				参数 8、9 表示裁切部分在画布中绘制的长、宽。本例中绘制时与裁切时面积相同，你也可以定制绘制的尺寸。
+				最终结果如下所示：*/
+  			ctx.drawImage(image, 20, 20, 185, 175, 50, 50, 185, 175);
+
+  			
+}
+
+
+
+
+
+			
+            
+
+
+
+ 
+        
+    </script>
+</body>
+</html>

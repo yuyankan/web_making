@@ -1,0 +1,63 @@
+<!-- 
+document.querySelector()方法
+
+1 常用的三种获取元素的js方式
+1 document.getElementById("");
+ 
+2 document.getElementsByClassName();
+ 
+3 document.getElementsByTagName();
+ 
+var doc=document;
+ 
+var box=doc.getElementById("box");
+ 
+var li=box.getElementsByTagName("li");
+ 
+var surfaces=box.getElementsByClassName("surfaces");
+
+
+2 querySelector() 
+var node = document.querySelector("#lover");   // 获取文档中的第一个id=lover的元素
+var node = document.querySelector(".lover");   // 获取文档中的第一个class="lover"的元素
+var node = document.querySelector("p.lover");  // 获取class=“lover” 的第一个p元素
+var node = document.querySelector("a[target]");// 获取第一个带target属性的a元素
+var element = document.querySelector('.foo,.bar');//返回带有foo或者bar样式类的首个元素
+document.querySelector(\"body\").style="";     // 移除style属性 
+document.querySelector("h2,h3").style.backgroundColor = "blue";//为文档的第一个h2元素添加背景颜色，但是，如果文档中<h3>元素位于<h2>元素之前，<h3>元素将会被设置指定的背景颜色，总结，多元素选择时，哪个先匹配就是谁咯，只有一个被选中。
+querySelector() 方法仅仅返回匹配指定选择器的第一个元素。
+
+
+
+3 querySelectorAll
+elementList = document.querySelectorAll(selectors);
+elementList 是一个静态的 NodeList 类型的对象。
+selectors 是一个由逗号连接的包含一个或多个 CSS 选择器的字符串。
+查找文档中共包含 "target" 属性的 <a> 标签，并为其设置边框:
+	var x = document.querySelectorAll("a[target]");
+ 
+var i;
+ 
+for (i = 0; i < x.length; i++) {
+ 
+        x[i].style.border = "10px solid red";
+ 
+}
+ 
+ 
+-------------------------------------------
+let t0 = window.performance.now();
+let li = document.querySelectorAll('li');
+console.log("li 的数量", li.length);
+for (let i = 0; i < li.length; i++) {
+    li[i].textContent = i;
+}
+let t1 = window.performance.now();
+console.log("耗时" + (t1 - t0) + "毫秒");
+
+当页面中出现多个相同class标签(或者多个相同标签(比如多个div))时，如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。
+该方法返回所有满足条件的元素，结果是个nodeList集合。查找规则与前面所述一样。    > querySelectorAll 得到一个伪数组 DOM。
+
+
+
+-->

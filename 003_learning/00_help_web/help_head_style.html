@@ -1,0 +1,83 @@
+<!-- 
+HTML中的style标签怎么写,html style标签是什么意思？关于style标签的使用方
+	
+
+本篇文章主要讲的是html style标签的定义和属性介绍，先让我们了解style标签在HTML中的一些用途和位置，然后介绍了使用中的一些方法和细节技巧，让我们一起来看看吧
+
+html style标签的定义和用法：
+
+style 标签用于为 HTML 文档定义样式信息。
+
+在 style 中，您可以规定在浏览器中如何呈现 HTML 文档。
+
+type 属性是必需的，定义 style 元素的内容。唯一可能的值是 text/css 。
+
+style 元素位于 head 部分中。
+
+HTML style 标签实例：html head style type= text/css h1 {color:red}p {color:blue} /style /head body h1 Header 1 /h1 p A paragraph. /p /body /html
+
+必需的属性：
+
+type ： text/css ： 规定样式表的 MIME 类型。
+
+html style标签的使用方法详解：
+
+/style 标签对中书写各种标签的样式,可以是body也可以是h1,即将行内样式全写在一块儿
+
+比如10个标签都是同一个class的话，如果在行内样式中就需要写10条
+
+而在style中写一条就成。
+
+现在都是结构(html)、样式(css)、行为(js)相分离的设计模式p id= xxx === style #xxx{} /style p >
+
+style标签在css样式表中按其所在位置分三种：
+
+1.内嵌样式表
+
+2.内部样式表
+
+3.外部样式表
+
+下面详细解释一下：
+
+1.内嵌样式表是写在使用它的标签(Tag)内的，例如要在 p 标签中使用，
+
+其语法为：p style font-size:20pt 这段文字使用了内嵌样式表，更改了字体大小为20 /p
+
+2.内部样式表不同于内嵌样式表，其是写在html网页的 head /head 标签之间的，所以它对本网页全部有效。应注意的是，因为它不是写在某一个标签内的，所以在写的时候要注意，自己想在那个标签内使用这个样式表，再定义的时候也要写清楚，否则会造成整个页面的混乱。例如：html head p.mylayout style type= text/css {font-size:22pt; color:blue; border-width:1px; border:double; text-align:center; } /style /head body p >
+
+可以看到，在定义内部样式表的时候， style 前面声明的时候应该首先声明在哪个标签里使用这个样式表，如果并不想在该网页所有的此标签中都使用这个样式表则在声明的标签后面加上自己定义的一个样式表名称，例如上面的p.mylayout，意为只能在该网页的 p 标签中使用此样式表，在要使用这个样式表的 p 标签中声明，声明方式为 标签 自定义样式表名称
+
+利用样式表选择，你可以用同样的HTML标签构成不同的样式。比如说，你希望段落 p 有两种样式，一种是居中对齐，一种是居右对齐。你就可以写如下样式：p.right {text-align:right}p.center {text-align:center}
+
+其中right和center就是两个样式表。然后你就可以引用这两个样式表，示例代码如下：p >
+
+也可以不用HTML 标签，直接用“.”加上样式表名称。示例代码如下：.center {text-align: center}
+
+这种通用的样式表名称就没有标签的局限性，可以用于不同的标签。比如：h1 class = center 这个标题居中显示。 /h1 p class = center 这个段落居中显示。 /p
+
+3.外部样式表
+
+外部样式表就是将样式表的内容单独写到一个notepad中，并保存为后缀为.css的文件，在你写的想要调用的网页中加上如下的代码(当然还是加到 head /head 之间)：link href= 你css文件所在的文件夹 rel= stylesheet type= text/css
+
+例如：
+
+先写一段代码并存为p.cssp.mylayout {font-size:20pt; border-width:1px; color:blue; }
+
+然后在你写的网页中调用这个样式表：HTML head link href= p.css所在的相对路径 rel= stylesheet type= text/css /head body p >
+
+所以一个外部样式表可以被很多网页调用，这就是外部样式表的好处。
+
+样式表也可以串联，即一个网页用多个css，其串联的顺序是：内嵌 内部 外部 浏览器自身的
+
+也就是说当一个网页有内部css时，它在的调用外部css就被覆盖了(即外部css不起作用)
+
+css样式表定义时的嵌套说明：
+
+p b {color:blue;}
+
+使用时：p 这段文字在b标签中的为 b 蓝色 /b /p
+
+cursor:hand 这个属性是将鼠标变成手的形状。
+
+-->

@@ -215,64 +215,10 @@
 
 // 饼形图定制
 // 折线图定制
-//document.querySelector(".pie button").addEventListener("click",function mypie())
-
-const pie_button= document.querySelector(".pie #search");
-
-
-
-
-pie_button.addEventListener("click",()=>{pie_time.value="cma";});
-
-function pie_data(file, platform, sofware, time){
-    d3.csv(file)
-        .then(function(csvdata){
-            return csvdata.filter(function(d){
-                return d.platform==platform;
-                            })
-            })
-        .then(function(csvplatform){
-                return csvplatform.filter(function(d){
-                    return d.software_version == software;
-                    })
-
-            })
-        .then(function(csv_ps){
-                return csv_ps.filter(function(d){
-                    return d.time_week== time;
-                    })
-
-            })
-        .then(function(csv_filtered){
-            Object.keys(csv_filtered[0]).map(pie_mymap);
-
-            function pie_mymap(num){
-                error_items[num] = 0;
-                };
-            })
-    };
-
-
-            
-
-
-           
-
-
-(function mypie() {
+(function() {
     // 基于准备好的dom，初始化echarts实例
-
     var myChart = echarts.init(document.querySelector(".pie .chart"));
 
-    /*var pie_platform = document.querySelector(".pie #platform");
-    var pie_software = document.querySelector(".pie #software");
-    var pie_time = document.querySelector(".pie #time");
-    const error_items = Object();
-    pie_data("data_test.csv", pie_platform pie_software, pie_time);*/
-    error_items = [{'platform ':'c','soft_version':3'','vin':'h9','date_week':'23-W16',"error1":8,"error2":9,"error3":10,"error4":11,"error5":12,"error6":13,"error7":14,"error8":15,"error9":16,"error10":17},
-        {'platform ':'c','soft_version':3'','vin':'h9','date_week':'23-W16',"error1":8,"error2":9,"error3":10,"error4":11,"error5":12,"error6":13,"error7":14,"error8":15,"error9":16,"error10":17}]
-      
-//
     option = {
         tooltip: {
             trigger: "item",
@@ -286,18 +232,18 @@ function pie_data(file, platform, sofware, time){
             top: "90%",
             itemWidth: 10,
             itemHeight: 10,
-            data: Object.keys(error_items),
+            data: ["0岁以下", "20-29岁", "30-39岁", "40-49岁", "50岁以上"],
             textStyle: {
                 color: "rgba(255,255,255,.5)",
                 fontSize: "12"
             }
         },
         series: [{
-            name: "Item distribution",
+            name: "年龄分布",
             type: "pie",
             center: ["50%", "42%"],
             radius: ["40%", "60%"],
-            /*color: [
+            color: [
                 "#065aab",
                 "#066eab",
                 "#0682ab",
@@ -307,15 +253,14 @@ function pie_data(file, platform, sofware, time){
                 "#06c8ab",
                 "#06dcab",
                 "#06f0ab"
-            ],*/
+            ],
             label: {
                 show: false
             },
             labelLine: {
                 show: false
             },
-            data: error_items 
-            /*[{
+            data: [{
                     value: 1,
                     name: "0岁以下"
                 },
@@ -335,7 +280,7 @@ function pie_data(file, platform, sofware, time){
                     value: 1,
                     name: "50岁以上"
                 }
-            ]*/
+            ]
         }]
     };
 

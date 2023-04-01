@@ -1,0 +1,88 @@
+<!--
+D3 并没有规定一定要使用 svg 中绘图，我们也可以用 div 来绘制柱状图。但从网页性能和图表灵活性方面考虑，还是建议使用 svg 。D3提供了很多 svg 图形的生成器，Line\Polygon\Path等，简化了绘制过程。关于SVG的基础使用，参考svg从入门到图标绘制和组件封装 。
+
+柱状图主要由矩形、坐标轴、文字标签等组成，我们首先来绘制矩形（柱子）。
+-->
+<!DOCTYPE doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>
+                Learning D3
+            </title>
+        </meta>
+        <!--1，在bootcdn引入d3.js或直接下载引入-->
+        <script src="https://d3js.org/d3.v7.min.js">
+        </script>
+    </head>
+    <body>
+
+    </body>
+    <script>
+        
+        
+        //添加svg元素，并设置其宽度和高度
+        //2,在body元素上添加画布
+        let svgWidth = 500;
+        let  svgHeight = 500;
+        const svg = d3.select("body")
+            .append('svg')
+            .attr('width', svgWidth)
+            .attr('height', svgHeight);
+
+        const sales = [['a',80], ['b',40],['c',70],['d',60],];    //数据
+        // define pi value for layout and data
+        //3,确定要绘制饼的数据，生成饼布局
+        let pie = d3.pie()
+                    .value(function(d){ return d[1]});
+
+        let pieData = pie(sales);
+        //4,生成后的数据结构多了startAngle起始孤度endAngle终此孤度value数据项中取数的数据，这个值取决于（value访问器）
+
+
+        //5,生成孤生成器
+        let outerRadius = 150;
+        let innerRadius = 0;
+        var arc = d3.arc()
+                    .innerRadius(innerRadius)
+                    .outerRadius(outerRadius);
+
+        //6,移动绘制点到画布中心,这里画红线目的是方便大家知道data中的数据是从那来的
+        let arcs = svg.selectAll('g')
+                    .data(pieData)
+                    .enter()
+                    .append('g')
+                    .attr("transform", "translate("+(svgWidth/2)+"," + (svgWidth/2) +")");
+
+        //7绘制饼图,这里的color是用颜色生成器生成的
+        //let color = d3.category20();
+        let color = d3.interpolateRdYlGn;
+        arcs.append('path')
+                .attr('fill',function(d,i){
+                    return color(i/sales.length)
+                })
+                .attr('d', function(d){
+                    return arc(d)// attr: d: how to draw : e.g: cat nose: 
+                    //<!-- 鼻子 -->
+                    //<path d='M 75 90 L 65 90 A 5 10 0 0 0 75 90'
+                    /*有的基本形状都是通用的 <path> 元素的快捷写法。接着使用 <path> 元素为猫添加鼻子。如下所示的代码，翻译过来就是 "移动到坐标(75, 90)。绘制一条到坐标(65,90) 的直线。然后以 x 半径为 5、y 半径为 10 绘制一个椭圆，最后回到坐标 (75, 90) 处"*/
+                });
+        //8，添加文字
+        arcs.append('text')
+                .attr('transform', function(d){
+                    let x = arc.centroid(d)[0] * 1.4;
+                    let y = arc.centroid(d)[1] * 1.4;
+                    return 'translate('+x+','+y+')'
+
+                })
+                .attr('text-anchor','middle')
+                .attr('fill', 'black')
+                .text(function(d){
+                    return d.value;
+                });
+
+
+
+       
+    </script>
+</html>

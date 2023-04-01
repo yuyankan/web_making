@@ -1,0 +1,160 @@
+<!--
+D3 并没有规定一定要使用 svg 中绘图，我们也可以用 div 来绘制柱状图。但从网页性能和图表灵活性方面考虑，还是建议使用 svg 。D3提供了很多 svg 图形的生成器，Line\Polygon\Path等，简化了绘制过程。关于SVG的基础使用，参考svg从入门到图标绘制和组件封装 。
+
+柱状图主要由矩形、坐标轴、文字标签等组成，我们首先来绘制矩形（柱子）。
+-->
+<!DOCTYPE doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>
+                Learning D3
+            </title>
+        </meta>
+        <!--1，在bootcdn引入d3.js或直接下载引入-->
+        <script src="https://d3js.org/d3.v7.min.js">
+        </script>
+    </head>
+    <body>
+        <svg width="600" height="600"></svg>
+
+    </body>
+    <script>
+        // 数据排序， by i nfected
+        const data = [
+        {"country": "KR", "infected": 6767, "death":44},
+        {"country": "IR", "infected": 4747, "death":124},
+        {"country": "IT", "infected": 4680, "death":197},
+        {"country": "JP", "infected": 1116, "death":12},
+        {"country": "DE", "infected": 639, "death":0},
+        {"country": "FR", "infected": 613, "death":9},
+        {"country": "ES", "infected": 387, "death":5},
+        {"country": "US", "infected": 324, "death":14},
+        {"country": "CH", "infected": 210, "death":1},
+        {"country": "UK", "infected": 163, "death":2},
+        {"country": "SD", "infected": 137, "death":0},
+        {"country": "SG", "infected": 130, "death":0},
+        {"country": "NL", "infected": 128, "death":1},
+        {"country": "NW", "infected": 113, "death":0},
+        {"country": "BG", "infected": 109, "death":0},
+        {"country": "MY", "infected": 83, "death":0},
+        {"country": "AU", "infected": 64, "death":2},
+        {"country": "KW", "infected": 58, "death":0},
+        {"country": "BL", "infected": 56, "death":0},
+        {"country": "AS", "infected": 55, "death":0},
+        {"country": "X", "infected": 48, "death":0},
+        {"country": "X", "infected": 46, "death":0},
+        {"country": "X", "infected": 45, "death":0},
+        {"country": "X", "infected": 31, "death":0},
+        {"country": "X", "infected": 23, "death":0},
+        {"country": "X", "infected": 21, "death":0},
+        {"country": "X", "infected": 11, "death":0},
+        {"country": "X", "infected": 8, "death":0},
+        {"country": "X", "infected": 6, "death":0},
+    ].reverse(); 
+
+        const colors = d3.interpolateRdYlGn;
+
+        const l = data.length;
+
+        const rect = {height: 1000, marginV: 10, marginH: 10, marginT: 40};
+
+        const innerRadius = 20;
+
+         const svg = d3.select("svg").append("g").attr("height", rect.height).attr("width", rect.height).attr("transform","translate("+ 400 + ","+ 480 +")");
+
+        const scale = d3.scaleLinear().domain([100, d3.max(data, e=>e.infected)]).range([80, 400]);
+
+        let pie = d3.pie()
+                    .value(function(d) {
+                     return 1; 
+                        })
+                    (data).map(function (e) {
+                    e.h = e.data.infected;
+                    return e;
+                        });
+
+        const arc = d3.arc()
+                    .innerRadius(innerRadius)
+                    .outerRadius(function (d) {
+                    return scale(d.h);
+                });
+
+        var g = svg.selectAll("path")
+                .data(pie)
+                .enter()
+                .append("path")
+       // .attr("transform","translate("+ 400 + ","+ 400 +")")
+                .attr("fill",function (d,i) {
+                    return colors( (data.length - i) / (data.length));
+                })
+                .attr("id", function(d,i) { return "donutArc"+i; })
+                .attr("stroke","silver")
+                .attr("stroke-width",1)
+                .transition().duration(1500) // time duration for each arc
+                .attrTween("d", tweenPie)// how to draw: arc
+            ;
+        // contry value show
+        svg.append("g")
+            .selectAll("text")
+            .data(pie)
+            .enter()
+            .append("text")
+            .attr("text-anchor", "right")
+            .attr("font-size", function (d, i) {
+                return (i > l - 4) ? 27 : 10;
+                })
+            .attr("dy", function (d, i) {
+                return (i > l - 4) ? 29 : 12;
+                })//dy: text relative position..
+            .attr("dx", 2)
+            .append("textPath")
+            .attr("fill","white")
+            .attr("xlink:href",function(d,i){return "#donutArc"+i;})
+            .text(function (d) {
+                return d.data.country
+                })
+            .style("opacity", 0)
+            .transition()
+            .delay(1500)
+            .duration(1500)
+            .style("opacity", 1)
+        ;
+
+        // value show
+
+        svg.append("g")
+            .selectAll("text")
+            .data(pie).
+            enter().
+            append("text")
+            .attr("text-anchor", "right")
+            .attr("font-size", function (d, i) {
+                return (i > l - 4) ? 25 : 10;
+                })
+            .attr("dy", -4)
+            .append("textPath")
+            .attr("xlink:href",function(d,i){
+                return "#donutArc"+i;
+                })
+            .text(function (d) {
+                return d.data.infected
+                })
+            .style("opacity", 0)
+            .transition()
+            .delay(1500)
+            .duration(1500)
+            .style("opacity", 1)
+        ;
+
+        function tweenPie(b) {
+            var i = d3.interpolate({startAngle: 0, endAngle: 0, h: 0}, b);//d3.interpolate - 插补任意值
+            return function(t) { 
+                return arc(i(t)); 
+                };
+            }
+
+
+       
+    </script>
+</html>

@@ -1,0 +1,35 @@
+<!--<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <head>
+
+    <body>
+        <p id='test'></p>
+        <script type="module" src="./help_web_sql.js"></script>
+    </body> 
+-->
+<!DOCTYPE doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>
+                Learning D3
+            </title>
+            <script src="https://d3js.org/d3.v7.min.js"></script>
+         
+        </meta>
+    </head>
+    <body>
+    <div id="test">existing div</div>
+
+    <script>
+        d3.select('body')
+        .insert('div', '#test')    //新子元素排在指定子元素(id=test)的前面
+        //如果是insert('div')，则新插入元素会排在已有子元素的后面，和上面append效果一样
+        .text('inserted div')
+    </script>
+</body>
+
+
+</html>

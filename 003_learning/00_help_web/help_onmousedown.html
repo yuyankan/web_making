@@ -1,0 +1,81 @@
+<!-- 
+鼠标事件对象
+当想要知道按下的是哪一个键的时候，给元素绑定mousedown事件，
+可以通过mousedown鼠标事件对象里的button属性，来知道具体是按下了哪一个键
+0 表示左键
+1 表示滚轮
+2 表示右键
+
+
+        div.onmousedown=function(e){
+            console.log('按下鼠标上的任意一个键')
+            e=e||window.event;
+            console.log(e.button)
+        }
+-->
+<!--
+e.target与e.currentTarget的作用
+要说清楚这个东西，还不太好阐述呢，所以，先看看下面的代码：
+
+
+
+	-->
+<!DOCTYPE html>  
+<html>  
+<head lang="en">  
+    <meta charset="UTF-8">  
+    <title></title>  
+    <style type="text/css" rel="stylesheet">  
+        #fa{  
+            width: 100%;  
+            height: 170px;  
+            padding: 20px 0px;  
+            background-color: cadetblue;  
+        }  
+        #son{  
+            width: 100%;  
+            height: 20px;  
+            padding: 30px 0px;  
+            background-color: black;  
+            color: white;  
+            text-align: center;  
+            cursor: pointer;  
+        }  
+    </style>  
+</head>  
+<body>  
+<div id="fa" onmousedown="getEventTrigger(event)">  
+    <p id="son" onmousedown="getEventTrigger(event)">点我试试</p>  
+</div>  
+</body>  
+<script type="text/javascript">  
+    var fa = document.getElementById('fa');  
+    var son = document.getElementById('son');  
+  
+  
+    function getEventTrigger(event)  
+    {  
+        x=event.currentTarget;  
+        y=event.target;  
+        alert("currentTarget 指向： " + x.id + "， target指向：" + y.id);  
+    }  
+</script>  
+</html> 
+<!--
+
+	起初我也不太明白这两个概念，不过将上述代码在浏览器上执行以后，结合事件捕获和事件冒泡的概念，e.target与e.currentTarget就不难理解了，我将上述代码执行的结果以截图的方式呈现出来，对比一下：
+
+当我点击id为son的p元素时：
+
+通过对比可以看出，当点击p元素时，执行的是p元素上绑定的事件，此时，事件监听的对象是p元素，目标也是p元素，即图一所
+
+示，currentTarget为p元素，target也是p元素；当事件冒泡到它的父级id为fa的元素div，触发了绑定在div上的事件，而这时，事件监
+
+听的对象是div，目标元素依然是p元素，对比图二的信息，也就是说，这时的currentTarget指向div，target依然指向p元素，由此我
+
+们可以得出： 
+
+e.currentTarget指的是注册了事件监听器的对象，而e.target指的是该对象里的子对象，也是触发这个事件的对象！这么说应该明白
+
+了吧？
+	-->

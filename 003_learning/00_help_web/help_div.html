@@ -1,0 +1,98 @@
+<!-- 
+div ID、CLASS、STYLE区别
+
+解释:　　　　　　　　　　　　　　　　
+1.<DIV align=名称 
+作用:水平对齐方式 
+名称:center,left,right,justify 
+分别表示 居中,左对齐,右对齐,两端对齐
+
+
+
+
+2.<DIV style=CSS语句 
+作用:设置样式 
+CSS语句,比如: 
+<DIV style="border:1px solid #F4BF20;padding:5px 0px 5px 0px ;margin-bottom:12px;"></div>
+
+
+3.<DIV id=名称 
+作用:赋予ID值 
+名称:这名称可以自己定,比如myDiv,然后通过document.getElementById("myDiv")可以获得这个DIV层对象,从而对它进行动态操作. 
+另外,如果这个id名称在CSS中被定义的话,这个DIV层将会套用该CSS样式,比如CSS中有这样的定义: 
+<style type="css/text"> 
+#myDiv {float:left;margin-left:10px;background:#FFFFFF;} 
+</style>
+
+
+
+
+4.<DIV class=名称 
+作用:套用CSS样式 
+这里的名称一般在CSS中有定义,否则没有意义. 
+比如<div class=div1>则在CSS中有div1所对应的样式: 
+<style type="css/text"> 
+.div1 {margin:13px 0 7px 0;height:1px;} 
+/* 注意,这里是".div1",不是"#div1","#"表示ID号,"."表示class类 */ 
+</style>
+
+
+--------------------- 
+3,4的区别是: 
+<DIV id= 
+<DIV class= 
+通过id可以较好地获取DIV层,以便对它进行操作,可以在定议的ID设置CSS 
+通过CSS可以套用CSS样式,CSS样式不仅在网页中应用,在其它文件中也有用到,比如XML方面. 
+在CSS中定义为： 
+<style type="css/text"> 
+#idName {} 
+.className {} 
+</style>
+
+
+---------------- 
+区别 
+<DIV align= 
+<DIV style=
+
+
+<div align="center"> 
+相当于<div style="text-align: center;"> 
+也就是说align="center"只是HTML里的标记, 
+通过CSS的样式（style）完全可以实现,而且CSS样式的功能远不止"将区块对齐"。　　
+　　
+
+
+优先级实验：
+<style>
+p{font-size:20pt}/*标签样式*/
+#ss{font-size:30pt}/*ID属性样式*/
+.sss{font-size:40pt}
+</style>
+
+
+<p id="ss" class="sss"   style="font-size:50">按时地方按时地方按时地方按时地方按时地方</p>
+
+
+结果：
+显示50PT大小的字，去掉style后显示30PT字，无论是调整p,#ss,.sss的次序还是改变id,class属性的次序，结果都一样
+
+
+结论：
+优先级次序：style>#ss>.sss>p
+
+
+　
+用法区别:
+A1：二者主要的区别在哪里呢？ 
+id你只能用来定义单一元素，定义二个以后。页面不会出现什么问题，但是W3检测的时候认为你页面不符合标准；class是类，同一个class可以定义多个元素。就页面效果而言，两个东西的视觉效果几乎无差别。 
+
+
+A2：id 选择符为什么要少用，它有有什么局限性？ 
+单一使用的样式用id，需要程序、js动态控制的样式用id，id在页面只能使用一次！提供少用id，因为id可能和页面嵌的程序冲突（比如名称相同等）！ 
+
+
+A3：我该在什么时候使用ID，什么时候使用class？ 
+单一的元素，或需要程序、JS控制的东西，需要用id定义；重复使用的元素、类别，用class定义。
+
+-->

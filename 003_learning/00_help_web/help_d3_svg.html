@@ -1,0 +1,56 @@
+<!--
+D3 并没有规定一定要使用 svg 中绘图，我们也可以用 div 来绘制柱状图。但从网页性能和图表灵活性方面考虑，还是建议使用 svg 。D3提供了很多 svg 图形的生成器，Line\Polygon\Path等，简化了绘制过程。关于SVG的基础使用，参考svg从入门到图标绘制和组件封装 。
+
+柱状图主要由矩形、坐标轴、文字标签等组成，我们首先来绘制矩形（柱子）。
+-->
+<!DOCTYPE doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>
+                Learning D3
+            </title>
+        </meta>
+        <script src="https://d3js.org/d3.v7.min.js">
+        </script>
+    </head>
+    <body>
+    </body>
+    <script>
+        const sales = [20,10,20,50,30,60,35];    //数据
+        //定义SVG元素的高度、宽度，柱子的宽度，柱子之间的间隔（柱子的高度由数据决定）
+        const svgHeight = 300, svgWidth = 500, barWidth = 30,  gap = 10
+        //添加svg元素，并设置其宽度和高度
+        const svg = d3.select("body")
+            .append('svg')
+            .attr('width', svgWidth)
+            .attr('height', svgHeight);
+
+
+        //比例尺与数据映射:
+        //比例尺是把一组输入域（domain）映射到输出域（range）的函数，它有点像数学中的函数y=f(x)，当输入 x 的值，就可以求得 y 的值。
+        //D3中有各种比例尺函数，【D3中常用的比例尺】(https://segmentfault.com/a/1190000011006780) 这篇文章有比较详细的介绍。
+            //我们这里要映射的是domain([0, max of sales]) ---> range([0, height of svg] ，修改上面的代码。
+        const yScale = d3.scaleLinear()
+                    .domain([0, d3.max(sales)])
+                    .range([0, svgHeight]);   //返回一个线性比例尺，是一个函数
+
+
+        //根据数据添加矩形        
+        svg.selectAll('rect')
+            .data(sales)
+            .enter()
+            .append('rect')
+            .attr('width', barWidth)
+            .attr('height', (d,i) => {  //将数据的值设置为矩形的高度
+                return yScale(d)
+            })
+            .attr('x', (d,i) => {   //根据柱子的宽度和对应数据的索引，计算出矩形的x坐标
+                return i * ( barWidth +  gap )
+            })
+            .attr('y', (d,i) => {    //用SVG元素的高度减去矩形的高度，计算出矩形的y坐标; 
+                return svgHeight - yScale(d)//将数据传入比例尺函数，计算矩形高度
+            })
+            .attr('fill', 'gold')    //设置填充色
+    </script>
+</html>

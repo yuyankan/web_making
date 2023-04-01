@@ -1,0 +1,73 @@
+<!-- 
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <style>
+    	<body>{
+    	margin: 0;
+    	overflow:hidden;
+    	}
+    </style>
+
+
+
+
+</head>
+<body>
+    <canvas class="myCanvas" id="canvas" style="margin:0 auto;">
+        The current browser does not support Canvas, can replace the browser a try! 
+        <!--在 canvas 标签内，你可以放置一些反馈信息，如果用户的浏览器不支持画布功能，这些内容就会显示出来。 -->
+    </canvas>
+
+    <script>
+
+        
+            var canvas = document.getElementById('canvas');// or use var canvas = document.querySelector('.myCanvas');
+
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            var ctx = canvas.getContext('2d');
+            //img
+            /*循环示例很有趣，其实在重度画布应用（比如游戏或实时可视化）中恒定循环是至关重要的支持组件。如果期望画布显示的内容像一部电影，屏幕最好能够以 60 帧每秒的刷新率实时更新，这样人眼看到的动作才更真实、更平滑。
+            一些 JavaScript 函数可以让函数在一秒内重复运行多次，这里最适合的就是 window.requestAnimationFrame()。它只取一个参数，即每帧要运行的函数名。下一次浏览器准备好更新屏幕时，将会调用你的函数。如果你的函数向动画中绘制了更新内容，则在函数结束前再次调用 requestAnimationFrame()，动画循环得以保留。只有在停止调用 requestAnimationFrame() 时，或 requestAnimationFrame() 调用后、帧调用前调用了 window.cancelAnimationFrame() 时，循环才会停止。
+
+            **注：**动画结束后在主代码中调用 cancelAnimationFrame() 是良好习惯，可以确保不再有等待运行的更新。
+            浏览器自行处理诸如“使动画匀速运行”、“避免在不可见的内容浪费资源”等复杂细节问题。
+
+            */
+            //“弹球”示例
+            function loop() {
+				ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+				ctx.fillRect(0, 0, width, height);
+
+				while(balls.length < 25) {
+				    var ball = new Ball();
+				    balls.push(ball);
+				  	}
+
+			 	for(i = 0; i < balls.length; i++) {
+				    balls[i].draw();
+				    balls[i].update();
+				    balls[i].collisionDetect();
+				  	}
+
+			  	requestAnimationFrame(loop);//每帧要运行的函数
+				}
+
+			loop();
+			/*我们在代码底部运行了一次 loop() 函数，它启动了整个循环，绘制了第一帧动画。接着 loop() 函数接管了requestAnimationFrame(loop) 的调用工作，即运行下一帧、再下一帧……的动画。
+
+			请注意每一帧我们都整体清除画布并重新渲染所有内容。（每帧创建一个新球（25 个封顶），然后绘制每个球，更新它们的位置，检查是否撞到了其他球。）向画布中绘制的新图形不能像 DOM 元素那样单独操作。你无法再画布中单独操作某一个球，因为只要绘制完毕了，它就是画布的一部分，而不是一个单独的球。你需要擦除再重画，可以将整帧擦除再重画整个画面，也可通过编程选择最小的部分进行擦除和重画。*/            
+
+
+
+ 
+        
+    </script>
+</body>
+</html>

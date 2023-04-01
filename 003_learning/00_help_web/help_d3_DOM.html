@@ -1,0 +1,34 @@
+<!--
+
+    当我们通过d3.selectAll('div')得到包含所有div的选择集，调用data(sports)就将sports数组的数据绑定到了该选择集上。这是D3帮我们完成的工作，通过console.dir(document.querySelector('div'))我们可以看到数据被绑定到了元素的__data__ 属性上（该属性是由D3添加的）。
+
+    当我们要使用数据赋值时，.text( (d, i) => d ) ，用到了匿名函数(d, i) => d。事实上，如果选择集调用的方法要访问被绑定的数据，一般使用这种匿名函数的方式。
+
+匿名函数的参数d代表数据（如football），i代表数据的索引（football对应的是0）。匿名函数的返回值就是我们将要使用的值，可以根据需要修改。比如.text( (d, i) => d + '，我喜欢' )
+ 
+-->
+<!DOCTYPE doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>
+                Learning D3
+            </title>
+            <script src="https://d3js.org/d3.v7.min.js"></script>
+         
+        </meta>
+    </head>
+    <body>
+     <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        const sports = ['football', 'swimming', 'tennis','tennis2']
+        d3.selectAll('div')
+            .data(sports)
+            .text( (d, i) => d )
+    </script>
+</body>
+
+
+</html>

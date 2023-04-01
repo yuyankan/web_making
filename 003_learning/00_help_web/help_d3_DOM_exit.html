@@ -1,0 +1,41 @@
+<!--
+数据往往是多变的，我们不得不考虑的情况就是，将dom选择集和数据进行绑定（调用data方法）的时候，当数据和dom选择集数量不对等时，我们要怎样更新dom？
+
+D3中的Join思想就用于解决这个问题，它的核心概念是Enter、Update、Exit。
+
+举个例子，如果数据是['football', 'swimming', 'tennis']，但dom选择集只有一个div，此时就会有两个数据没有dom元素与之对应，D3会创建两个空的占位元素与数据对应，这部分占位元素集合就称为 Enter。
+
+!!如果数据是['football', 'swimming', 'tennis']，而dom选择集有4个div，则会有一个元素没有数据绑定，这部分元素集合被称为 Exit。
+
+-->
+<!DOCTYPE doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>
+                Learning D3
+            </title>
+        </meta>
+        <script src="https://d3js.org/d3.v7.min.js">
+        </script>
+    </head>
+    <body>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <script>
+            const sports = ['football', 'swimming', 'tennis']
+    const update = d3.select("body").selectAll('div').data(sports)
+            
+    update.exit()   //获取Exit元素集合的引用
+        .text('exit')   //设置文本内容，但通常是调用remove方法删除元素
+        
+    update.text((d,i) => d + ' update')
+        </script>
+    </body>
+</html>

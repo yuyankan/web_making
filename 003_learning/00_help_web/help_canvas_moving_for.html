@@ -1,0 +1,99 @@
+<!-- 
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <style>
+    	<body>{
+    	margin: 0;
+    	overflow:hidden;
+    	}
+    </style>
+
+
+
+
+</head>
+<body>
+    <canvas class="myCanvas" id="canvas" style="margin:0 auto;">
+        The current browser does not support Canvas, can replace the browser a try! 
+        <!--在 canvas 标签内，你可以放置一些反馈信息，如果用户的浏览器不支持画布功能，这些内容就会显示出来。 -->
+    </canvas>
+
+    <script>
+
+        
+            var canvas = document.getElementById('canvas');// or use var canvas = document.querySelector('.myCanvas');
+
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            var ctx = canvas.getContext('2d');
+            //img
+            //translate()，可用于移动画布的原点
+            ctx.translate(width/2, height/2);
+            //这会使原点 (0, 0) 从画布左上顶点移动至画布正中心。这个功能在许多场合非常实用，就像本示例，我们的绘制操作都是围绕着画布的中心点展开的。
+
+            //这里我们实现了一个与上文三角形示例中相同的 degToRad() 函数、一个返回给定范围内随机数 rand() 函数、length 和 moveOffset 变量（见下文），以及一个空的 for 循环。
+
+
+            function degToRad(degrees) {
+				  return degrees * Math.PI / 180;
+				};
+
+			function rand(min, max) {
+			  return Math.floor(Math.random() * (max-min+1)) + (min);
+			}
+
+			var length = 250;
+			var moveOffset = 20;
+		//此处的理念是利用 for 循环在画布上循环迭代绘制好玩儿的内容。请将以下代码添加进 for 循环中：
+
+			for(var i = 0; i < length; i++) {
+
+				ctx.fillStyle = 'rgba(' + (255-length) + ', 0, ' + (255-length) + ', 0.9)';
+				ctx.beginPath();
+				ctx.moveTo(moveOffset, moveOffset);
+				ctx.lineTo(moveOffset+length, moveOffset);
+				var triHeight = length/2 * Math.tan(degToRad(60));
+				ctx.lineTo(moveOffset+(length/2), moveOffset+triHeight);
+				ctx.lineTo(moveOffset, moveOffset);
+				ctx.fill();
+
+				length--;
+				moveOffset += 0.7;
+				ctx.rotate(degToRad(5));
+
+			}
+
+			/*在每次迭代中：
+			设置 fillStyle 为略透明的紫色渐变色。渐变由每次迭代时 length 值的改变实现。随着循环的运行， length 值逐渐变小，从而使连续的三角形颜色逐渐变亮。
+			开始路径。
+			将钢笔移动至坐标 (moveOffset, moveOffset)；该变量定义了每次要绘制新三角形时需要移动的距离。
+			画一条直线，终点坐标为 (moveOffset+length, moveOffset)。即一条长度为 length 与 X 轴平行的线。
+			计算三角形的高，方法同上。
+			向三角形底部顶点方向绘制一条直线，然后向三角形的起始点绘制一条直线。
+			调用 fill() 为三角形填充颜色。
+			更新次序变量，准备绘制下一个三角形。length 的值减一，使三角形每次迭代都变小一些；小幅增加 moveOffset 的值，使得下一个三角形略微错位；
+			用一个新函数 rotate() 来旋转整块画布，在绘制下个三角形前画布旋转 5°。*/
+
+
+
+
+
+
+
+
+			
+            
+
+
+
+ 
+        
+    </script>
+</body>
+</html>
