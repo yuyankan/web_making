@@ -3,7 +3,7 @@
 var pie_button = document.querySelector(".pie #search") // 这里写
 
 
-pie_button.addEventListener("click",mypie_data);
+pie_button.addEventListener("click",mypie);
 
 function mypie() {
       
