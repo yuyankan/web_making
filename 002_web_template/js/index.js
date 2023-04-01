@@ -42,6 +42,7 @@
             axisLine: {
                 show: false
             }
+            
         }],
         yAxis: [{
             type: "value",
@@ -220,8 +221,6 @@
 const pie_button= document.querySelector(".pie #search");
 
 
-
-
 pie_button.addEventListener("click",()=>{pie_time.value="cma";});
 
 function pie_data(file, platform, sofware, time){
@@ -253,35 +252,23 @@ function pie_data(file, platform, sofware, time){
     };
 
 
-            
 
 
-           
 
-
-(function mypie() {
+function mypie() {
     // 基于准备好的dom，初始化echarts实例
 
     var myChart = echarts.init(document.querySelector(".pie .chart"));
 
-    /*var pie_platform = document.querySelector(".pie #platform");
+    var pie_platform = document.querySelector(".pie #platform");
     var pie_software = document.querySelector(".pie #software");
     var pie_time = document.querySelector(".pie #time");
     const error_items = Object();
-    pie_data("data_test.csv", pie_platform pie_software, pie_time);*/
-    error_items = [{'platform ':'c','soft_version':3'','vin':'h9','date_week':'23-W16',"error1":8,"error2":9,"error3":10,"error4":11,"error5":12,"error6":13,"error7":14,"error8":15,"error9":16,"error10":17},
-        {'platform ':'c','soft_version':3'','vin':'h9','date_week':'23-W16',"error1":8,"error2":9,"error3":10,"error4":11,"error5":12,"error6":13,"error7":14,"error8":15,"error9":16,"error10":17}]
-      
-//
+    pie_data("data_test.csv", pie_platform pie_software, pie_time);
+
+
     option = {
-        tooltip: {
-            trigger: "item",
-            formatter: "{a} <br/>{b}: {c} ({d}%)",
-            position: function(p) {
-                //其中p为当前鼠标的位置
-                return [p[0] + 10, p[1] - 10];
-            }
-        },
+        tooltip: {},
         legend: {
             top: "90%",
             itemWidth: 10,
@@ -344,7 +331,7 @@ function pie_data(file, platform, sofware, time){
     window.addEventListener("resize", function() {
         myChart.resize();
     });
-})();
+};
 // 学习进度柱状图模块
 (function() {
     // 基于准备好的dom，初始化echarts实例
