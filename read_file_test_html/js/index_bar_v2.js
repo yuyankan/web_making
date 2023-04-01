@@ -279,13 +279,7 @@ function draw_bar(data_object){
             ],
         };
         
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    
-
-        
-          
+            
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
     window.addEventListener("resize", function(){
