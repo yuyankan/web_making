@@ -1,6 +1,6 @@
 
 
-var pie_button = document.querySelector(".pie #search") // 这里写
+var pie_button = document.querySelector("#pie-search") // 这里写
 
 
 pie_button.addEventListener("click",draw_pie);

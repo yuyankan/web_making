@@ -1,0 +1,148 @@
+<!-- HTML基础知识（五）——position定位
+
+https://blog.csdn.net/weixin_48683052/article/details/120300990?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168048969116800186535156%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168048969116800186535156&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-120300990-null-null.142^v80^wechat_v2,201^v4^add_ask,239^v2^insert_chatgpt&utm_term=html%E4%B8%ADposition%E7%9A%84%E7%94%A8%E6%B3%95&spm=1018.2226.3001.4187
+
+一、定位
+        1、常见的定位布局有float布局，position布局，flex（弹性盒子）布局。
+position布局，定位布局。
+
+        2、定位布局：定位指的是指定一个元素在网页上的位置；
+
+        3、一共有5种定位方式，也就是说position属性主要有五个值：
+
+        （1）static 
+
+        （2）relative 
+
+        （3）fixed 
+
+        （4）absolute 
+
+        （5）sticky （最后一个sticky是2017年浏览器才支持的。）
+
+        （这些值的存在是用来进行元素的位置的定义,然后借助**top**,**bottom**,**left**,**right**四个属性值，对元素的位置进行更精确的定位。）c
+
+
+        二、static 静态定位
+1、static 是position属性的默认值，如果省略position属性，浏览器就认为是static定位；浏览器会按照源码的顺序，决定每个元素的位置,这称为"正常文本流"（normal flow）。每个块级元素占据自己的区块（block）,元素与元素之间不产生重叠。
+
+        2、static也称为静态定位，实际上是不做定位。
+
+        注意:static定位所导致的元素位置，是浏览器自主决定的,所以top、bottom、left、right这四个属性值无效。
+
+三、fixed 固定定位
+        1、fixed 表示，相对于视口（viewport，浏览器窗口|可视窗口）进行偏移，即定位基点是浏览器的可视窗口.这会导致元素的位置不会随页面滚动而变化，好像固定在网页上一样。
+
+        2、它要搭配top、bottom、left、right这四个属性一起使用，表示元素的初始位置是基于viewport计算的，否则初始位置就是元素的默认位置。
+
+        3、元素设置使用fixed定位之后，在网页的普通文档流中不占空间,元素的层级要高于普通文档流。
+
+
+四、relative 相对定位    
+        1、relative表示，相对于默认位置（即static时的位置）进行偏移，即定位的基点是元素的默认位置。 
+
+        2、它必须搭配top、bottom、left、right这四个属性一起使用，用来指定偏移的方向和距离。
+
+        3、使用relative定位后，元素在网页的普通文档流中依然占空间；元素层级比普通文档流更高。
+
+五、absolute 绝对定位
+        1、absolute相对于上级元素(一般是父元素)进行偏移，即定位基点是父元素。
+
+        2、它有一个重要的限制条件：定为基点（一般是父元素）不能是static定位，否则定位基点就会变成整个网页的根元素html。另外absolute定位必须搭配    
+
+        3、top、bottom、left、right这四个属性一起使用。
+
+        4、小结：absolute是相对于离自己最近的做过非static定位的父元素。absolute定位的元素会被‘’正常页面流“忽略，即在正常页面流中不占空间，周边元素不受影响。
+
+
+六、z-index用来调整元素的层级高低。
+        ps：1、普通文档流的元素默认层级为0，使用浮动和position定位（除static）之后的元素，默认层级高于普通级（高半级，介于0~1之间），可以使用z-index设置使用过position定位的元素和层级高低，数值越大，层级越高，若数值小于0则比普通元素的层级更低。
+
+        2、普通元素设置z-index无效。
+
+七、sticky（粘性定位）
+        1、sticky跟前面四个属性都不一样，它会产生一些动态效果，很像relative和fixed的结合：一些时候是relative定位（定位基点是自身默认），另一些时候自动变成fixed定位（定位基点是视口）；因此能够形成“动态固定”效果。
+
+
+
+-->
+<!--
+
+        1. relative相对定位
+相对定位顾名思义，就是元素对于他原本在的位置来说的。也就是说他的参考物是定位前的位置。
+特点：
+
+不影响元素的本身特性
+元素不脱离文档流
+相对于原位置进行偏移
+举例说明：
+
+
+2.absolute绝对定位
+绝对定位就是元素以带有定位的父级元素来移动位置，也就是说参照物是最近的带有定位的父级，如果没有的话就参照body。
+
+特点：
+
+元素脱离文档流
+行元素支持所有css样式
+块元素内容撑开宽高
+清楚子级浮动
+如下图所示，在上述案例中对方块2进行绝对定位，右偏移30px，此时的结果是方块2对于body右边距离30px，并且方块3较于一开始上移到了原本方块2的位置，元素脱离了文档流
+
+3. 固定定位fixed
+固定定位的参照物是浏览器的窗口，跟父级元素没有任何的关系，单独使用，并且不随滚动条滚动。
+
+特点：
+
+脱离文档流
+清除子级浮动
+如图一个例子，利用固定定位来实现浏览器网页中两个固定不随滚动条滚动的矩形。
+
+4. 万能居中公式
+  在实现效果时，总是会有一些边框永远居中的现象，这时，我们有一个在网页中居中的小技巧，那就是在css中对于div进行一些相应的设置，设置相应的宽高之后，进行绝对定位，左偏移和上偏移都设置成50%，相应的margin-left设置为宽的一半的负数，margin-top设置为高的一半的负数即可实现在网页居中的效果，示例如下：
+
+
+        -->
+!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+                *{
+                        margin:0;
+                        padding:0;
+
+                }
+                div{
+                width:100px;
+                height:300px;
+                top:260px;
+                background-color:darkcyan;
+                position:fixed;
+
+                }
+      
+     
+             /* 通过对第二个方块进行相对定位，让第二个方块右偏移30px，这样的话方块在他原有的位置上向左边移动了30px，也就是在原有的基础上距离右边30px。*/
+          
+             .left{
+                
+                left:10px;
+               
+             }
+             .right{
+               
+                right:10px;
+                
+             }
+        </style>
+
+    </head>
+    <body>
+        <div>1</div>
+  
+        <div class="left"></div>
+        <div class="right"></div>
+</body>
+</html>

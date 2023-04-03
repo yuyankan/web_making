@@ -46,7 +46,16 @@ header .showTime {
     font-size: 0.25rem;
     color: black/*rgba(255, 255, 255, 0.7);*/
 }
-
+h2{
+    position: relative;
+    border: 1px solid red;
+    height: 0.5rem;/*height CSS 属性指定了一个元素的高度。默认情况下，这个属性决定的是内容区（ content area）的高度，但是，如果将 box-sizing 设置为 border-box , 这个属性决定的将是边框区域（border area）的高度*/
+    line-height: 0.6rem;
+    text-align: center;
+    color: black;/*#fff;*/
+    font-size: 0.25rem;
+    font-weight: 800;
+}
 .mainbox {
     min-width: 1024px;
     max-width: 1920px;
@@ -56,21 +65,23 @@ header .showTime {
 }
 
 .mainbox .column {
-    flex: 5;/* box ration in main box*/
+    flex: 1;
+    padding: 0.125rem 0.125rem 0;
+    overflow: hidden;
 }
 
-.mainbox .column:nth-child(1) {
-    flex: 5;
-    margin: 0 0.125rem 0.1875rem;
+.mainbox .column:nth-child(2) {
+    flex: 2;
+    padding: 0.125rem 0.125rem 0;
     overflow: hidden;
 }
 
 .pie {
     position: relative;
-    height: 3.875rem;
+    height: 600px;
     border: 1px solid rgba(25, 186, 139, 0.17);
-    background: rgba(255, 255, 255, 0.04) url(../images/line\(1\).png);
-    padding: 0 0.1875rem 0.5rem;
+    
+    padding: 0 0.1875rem 0.5rem;/* padding will influece box size, while margin not*/
     margin-bottom: 0.1875rem;
 }
 
@@ -98,14 +109,16 @@ header .showTime {
     border-radius: 20%;
 }
 
-.pie .footer {
+.my-footer {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
+    color:black;
+
 }
 
-.pie .footer::before {
+.my-footer::before {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -117,7 +130,7 @@ header .showTime {
     border-radius: 20%;
 }
 
-.pie .footer::after {
+.my-footer::after {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -129,88 +142,105 @@ header .showTime {
     border-radius: 20%;
 }
 
-.pie h2 {
-    height: 0.6rem;
-    line-height: 0.6rem;
-    text-align: center;
-    color: black/*#fff;*/
-    font-size: 0.25rem;
-    font-weight: 400;
-}
 
-.pie .platform{
+
+
+.search_button{
+    border: 2px solid red;
+    position:absolute;
+
+    top: 20px;
+    right:10px;
+    height: 30px;
+    line-height: 1px;
+    text-align: center;
+    color:  black;
+    font-size: 15px;
+    font-weight: 400;
+
     
-    
-    height: 0.3rem;
-    line-height: 0.6rem;
-    text-align: center;
-    color: black/*#fff;*/
-    font-size: 0.25rem;
-    font-weight: 400;
 
 }
 
-.pie .software{
-    position: relative;
-    right: 0rem;
-    height: 0.3rem;
-    line-height: 0.6rem;
-    text-align: center;
-    color: black/*#fff;*/
-    font-size: 0.25rem;
-    font-weight: 400;
-
-}
-
-
-
-.pie h2 a {
-    margin: 0 0.1875rem;
-    color: #fff;
-    text-decoration: underline;
-}
 
 .pie .chart {
-    width: 600px;
-    height:600px;
+    border: 3px solid red;
+    position:relative;
+    top: 10px;
+
+    height: 400px;
+
+  
+}
+.bar .allcharts {
+    border: 3px solid red;
+    position:relative;
+    top: 10px;
+
+    height: 600px;
+    display: flex;
+    flex-direction:column
+  
+}
+.bar .allcharts .sub_row{
+        flex:2;
+        border: 1px solid red;
+        position:relative;
+        top: 0px;
+
+        height: 200px;
+        display: flex;
+        flex-direction:row
+
+
+}
+
+.bar .chart {
+    border: 1px solid red;
+    position:relative;
+    top: 1px;
+    padding: 0,0,0;
+
+  
+
+    height: 200px;
+    flex:1;
+  
+}
+
+
+
+
+
+
+.inputselection{
+    border: 3px solid red;
+    position:relative; /* !!!important to use relative, -->commonly used */
+    top: 10px;
+
+    height: 60px;
+    padding: 0 0.1875rem 0.5rem;
+    margin-bottom: 0.1875rem;
+    display: flex;
+    justify-content : center;
+
+    font-size: 13px;
+    font-weight: 100;
+
+  
 }
 
 
 .bar {
     position: relative;
-    height: 3.875rem;
+    height: 600px;
     border: 1px solid rgba(25, 186, 139, 0.17);
-    background: rgba(255, 255, 255, 0.04) url(../images/line\(1\).png);
-    padding: 0 0.1875rem 0.5rem;
+    
+    padding: 0 0.1875rem 0.5rem;/* padding will influece box size, while margin not*/
     margin-bottom: 0.1875rem;
 }
-.bar #vinsearch{
-    position: relative;
-    right: 0rem;
-    height: 0.3rem;
-    line-height: 0.6rem;
-    text-align: center;
-    color: black/*#fff;*/
-    font-size: 0.25rem;
-    font-weight: 400;
 
-}
-.bar h2 {
-    height: 0.6rem;
-    line-height: 0.6rem;
-    text-align: center;
-    color: black/*#fff;*/
-    font-size: 0.25rem;
-    font-weight: 400;
-}
-
-.bar .chart {
-    width: 600px;
-    height:600px;
-}
-
-
-.bar::before {
+.bar:before {
     position: absolute;
     top: 0;
     left: 0;
@@ -232,41 +262,6 @@ header .showTime {
     border-top: 2px solid #02a6b5;
     border-right: 2px solid #02a6b5;
     border-radius: 20%;
-}
-
-.bar .footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
-
-.bar .footer::before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-bottom: 2px solid #02a6b5;
-    border-left: 2px solid #02a6b5;
-    border-radius: 20%;
-}
-
-.bar .footer::after {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-bottom: 2px solid #02a6b5;
-    border-right: 2px solid #02a6b5;
-    border-radius: 20%;
-}
-.no {
-    background: rgba(101, 132, 226, 0.1);
-    padding: 0.1875rem;
 }
 
 .no .no-hd {

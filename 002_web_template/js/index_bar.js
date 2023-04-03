@@ -1,6 +1,6 @@
 
 
-var pie_button = document.querySelector(".bar #search") // 这里写
+var pie_button = document.querySelector("#bar-search") // 这里写
 
 
 pie_button.addEventListener("click",draw_bar);
@@ -49,6 +49,8 @@ function draw_bar(){
             //--------------    标题 title  ----------------   
             title: {                                
                 text: 'Iterm_char/vin',  
+                top:'3%',
+
                 //left: center             
                 textStyle:{                 //---主标题内容样式    
                     //color:'#bbb'
@@ -67,7 +69,7 @@ function draw_bar(){
             legend: {
 
                 type:'plain',               //----图例类型，默认为'plain'，当图例很多时可使用'scroll'
-                top:'1%',                   //----图例相对容器位置,top\bottom\left\right            
+                top:'10%',                   //----图例相对容器位置,top\bottom\left\right            
                 selected:{
                     'items':true,  
                         //----图例选择,图形加载出来会显示选择的图例，默认为true
@@ -112,7 +114,10 @@ function draw_bar(){
             //-------------  grid区域  ----------------
             grid:{
                 show:false,                 //---是否显示直角坐标系网格
-                top:80,                     //---相对位置，top\bottom\left\right  
+                //top:'10%',    // 一下数值可为百分比也可为具体像素值,                     //---相对位置，top\bottom\left\right  
+                right:'5%',
+                left:'0%',
+                bottom:'0%',
                 containLabel:true,          //---grid 区域是否包含坐标轴的刻度标签
                 tooltip:{                   //---鼠标焦点放在图形上，产生的提示框
                     show:true,  
@@ -144,7 +149,7 @@ function draw_bar(){
                     //------------------- 箭头 -------------------------
                     symbol:['none', 'arrow'],   //---是否显示轴线箭头
                     symbolSize:[8, 8] ,         //---箭头大小
-                    symbolOffset:[0,7],         //---箭头位置
+                    symbolOffset:[0,1],         //---箭头位置
                     
                     //------------------- 线 -------------------------
                     lineStyle:{
@@ -194,7 +199,7 @@ function draw_bar(){
                 nameLocation:'end',         //---轴名称相对位置value
                 nameTextStyle:{             //---坐标轴名称样式
                     //color:"#fff",
-                    padding:[5,0,0,5],  //---坐标轴名称相对位置
+                    padding:[0,0,0,5],  //---坐标轴名称相对位置
                 },
                 nameGap:15,                 //---坐标轴名称与轴线之间的距离
                 //nameRotate:270,           //---坐标轴名字旋转
@@ -204,8 +209,8 @@ function draw_bar(){
                     
                     //------------------- 箭头 -------------------------
                     symbol:['none', 'arrow'],   //---是否显示轴线箭头
-                    symbolSize:[8, 8] ,         //---箭头大小
-                    symbolOffset:[0,7],         //---箭头位置
+                    symbolSize:[4, 4] ,         //---箭头大小
+                    symbolOffset:[0,3],         //---箭头位置
                     
                     //------------------- 线 -------------------------
                     lineStyle:{
@@ -258,7 +263,7 @@ function draw_bar(){
                         },
 
                     itemStyle: {
-                            barBorderRadius:[5,5,0,0],       // 柱状图头部圆弧
+                            barBorderRadius:[1,1,0,0],       // 柱状图头部圆弧
                         // 柱状图颜色
                           color: params => {
                           //  colorList是每根柱子的颜色，一组是一个渐变
@@ -272,11 +277,12 @@ function draw_bar(){
                             return colorList[index]
                           },
 
-                    
-                        barWidth:'20',              //---柱形宽度
-                        barCategoryGap:'20%'        //---柱形间距
+                         
                         },
-                    data: array_sum
+                    data: array_sum,
+                    barWidth: '10',//---柱形宽度
+                    barCategoryGap:'20%'//---柱形间距
+
             }
             ],
         };

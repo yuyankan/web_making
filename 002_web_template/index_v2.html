@@ -21,29 +21,38 @@
       
                 <div class="pie">
                     <h2> Pie Quality Item </h2>
+                    <div class="pie inputselection">
+         
 
-                    <label for="platform" style="white">Platform Selection</label>
-                    <select class="platform" id="platform">
-                        <option value="">------</option>
-                        <option value="cma">CMA</option>
-                        <option value="spa">SPA</option>
-                    </select>
+                        <label for="platform" >Platform
+                        <select id="platform" >
+                            <option value="">------</option>
+                            <option value="cma">CMA</option>
+                            <option value="spa">SPA</option>
+                        </select>
+                        </label>
 
-                    <label for="software">Software Version</label>
-                    <select class="software" id="software">
-                        <option value="">------</option>
-                        <option value="1">01</option>
-                        <option value="2">02</option>
-                    </select>
+                        <label for="software" >Software Version
+                        <select  id="software">
+                            <option value="">------</option>
+                            <option value="1">01</option>
+                            <option value="2">02</option>
+                        </select>
+                        </label>
+                    
 
-                    <label for="time">Time range/week</label>
-                    <input class="pie_time" id="time" name="week" type="week" value="---"/>
+                        <label for="time">Time/week
+                        <input  id="time" name="week" type="week" value="---"/>
+                        </label>
 
-                    <button id="search">Search</button>
+                        <button id="pie-search" , class="search_button">Search</button>
+            
+                    </div>
 
-                    <div class="chart"></div>
+                    <div class="pie chart"></div>
 
-                    <div clas="footer"></div>
+                <div class="my-footer"></div>
+
                     
                 </div>
             </div>
@@ -52,15 +61,35 @@
 
                 <div class="bar">
                     <h2> Item_ration/vin</h2>
+                    <div class="inputselection">
+                        <label for="vinsearch" >Vin input
+                        <input id="vinsearch" type="text" name="vinsearch" value=""/>
+                        </label>
 
-                    <label for="vinsearch" style="white">Vin input</label>
-                    <input id="vinsearch" type="text" name="vinsearch" value=""/>
+                        <button id="bar-search" class="search_button">Search</button>
+                    </div>
 
-                    <button id="search">Search</button>
+                    <div class="bar allcharts">
+                        <div class="bar allcharts sub_row">
 
-                    <div class="chart"></div>
+                            <div class="bar chart"></div>
+                            <div class="bar chart"></div>
+                            <div class="bar chart"></div>
+                        </div>
+                        <div class="bar allcharts sub_row">
+                            <div class="bar chart"></div>
+                            <div class="bar chart"></div>
+                            <div class="bar chart"></div>
+                        </div>
+                        <div class="bar allcharts sub_row">
+                            <div class="bar chart"></div>
+                            <div class="bar chart"></div>
+                            <div class="bar chart"></div>
+                        </div>
+                    </div>
+
                     
-                    <div clas="footer"></div>
+                    <div class="my-footer"></div>
 
                 </div>
 
