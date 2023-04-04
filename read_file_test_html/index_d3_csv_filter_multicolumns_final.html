@@ -73,24 +73,15 @@
             d3.csv(file)
                 .then(function(csvdata){
                     return csvdata.filter(function(d){
-                        if ((d.platform=="cma") && (d.soft_version == "1")){return d;}
+                        if ((d.platform==platform) && (d.soft_version == software) &&(d.date_week==time)){return d;}
                         
                                     })
                     })
-                /*.then(function(csvplatform){
-                        return csvplatform.filter(function(d){
-                            return d.software_version == software;
-                            })
-                    })
-                .then(function(csv_ps){
-                        return csv_ps.filter(function(d){
-                            return d.time_week== time;
-                            })
-                    })*/
+                
                 .then(function(csv_filtered){
                      
                     document.getElementById("t2").innerHTML = JSON.stringify(csv_filtered);
-                    error_items = csv_filtered
+                 
                        
                     })
             };
