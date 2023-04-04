@@ -58,7 +58,7 @@
         var pie_time = document.querySelector(".pie #time");
         
         pie_data("data_test_multicolumn.csv", pie_platform.value, pie_software.value, pie_time.value);
-        document.getElementById("t3").innerHTML =  JSON.stringify(error_items);
+        
      
 
         /*document.getElementById("h1").innerHTML =  error_items;
@@ -79,9 +79,17 @@
                     })*/
                 
                 .then(function(csv_filtered){
+                    var filteredData = csv_filtered.map(function(d) {
+                      return {
+                     
+                        column1: d.voltage,
+                   
+                      };
+                    });
                      
                     document.getElementById("t2").innerHTML = JSON.stringify(csv_filtered);
-                    document.getElementById("t1").innerHTML = Object.keys(JSON.stringify(csv_filtered)[0]);
+                    document.getElementById("t1").innerHTML = Object.keys(csv_filtered[0]);
+                    document.getElementById("t3").innerHTML = filteredData
                  
                        
                     })
