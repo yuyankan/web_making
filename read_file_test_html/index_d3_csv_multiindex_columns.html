@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <title>
+                Load Json
+            </title>
+            <script src="https://d3js.org/d3.v7.min.js">
+            </script>
+        </meta>
+    </head>
+    <body>
+        <h1>HI</h1>
+        <p id="t1"></p>
+        <p id="t2"></p>
+        <p id="t3"></p>
+     
+
+        <div class="pie">
+        <h2>Pie Quality Item </h2>
+        <label for="platform"  style="white">Platform Selection</label>
+        <select id="platform"  class="platform">
+            <option value="">------</option>
+            <option value="cma">CMA</option>
+            <option value="spa">SPA</option>
+        </select>
+        <label for="software">Software Version</label>
+        <select id="software" class="software">
+            <option value="">------</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+        </select>
+
+         <label for="time">Time range/week</label>
+        <input type="week" value="2023-W10" name="week" id="time" class="pie_time"></input>
+            
+        </select>
+        <button id="search">Search</button>
+        </div>
+
+
+    </body>
+    <script>
+        
+        const pie_button= document.querySelector(".pie #search");
+        const error_items = Object();
+
+
+        pie_button.addEventListener("click",mypie);
+
+        function mypie() {
+
+        var pie_platform = document.querySelector(".pie #platform");
+        var pie_software = document.querySelector(".pie #software");
+        var pie_time = document.querySelector(".pie #time");
+        
+        pie_data("data_test_multicolumn.csv", pie_platform.value, pie_software.value, pie_time.value);
+        document.getElementById("t3").innerHTML =  JSON.stringify(error_items);
+     
+
+        /*document.getElementById("h1").innerHTML =  error_items;
+        var data_test = JSON.stringify(error_items)
+        document.getElementById("t2").innerHTML = data_test ;*/
+        
+        };
+
+
+
+        function pie_data(file, platform, software, time){
+            d3.csv(file)
+                /*.then(function(csvdata){
+                    return csvdata.filter(function(d){
+                        if ((d.platform==platform) && (d.soft_version == software) &&(d.date_week==time)){return d;}
+                        
+                                    })
+                    })*/
+                
+                .then(function(csv_filtered){
+                     
+                    document.getElementById("t2").innerHTML = JSON.stringify(csv_filtered);
+                    document.getElementById("t1").innerHTML = Object.keys(JSON.stringify(csv_filtered)[0]);
+                 
+                       
+                    })
+            };
+
+     
+    
+
+     
+    </script>
+</html>
