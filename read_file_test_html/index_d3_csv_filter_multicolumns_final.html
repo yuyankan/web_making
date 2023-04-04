@@ -57,7 +57,7 @@
         var pie_software = document.querySelector(".pie #software");
         var pie_time = document.querySelector(".pie #time");
         
-        pie_data("data_test.csv", pie_platform.value, pie_software.value, pie_time.value);
+        pie_data("bar_data_csv.csv", pie_platform.value, pie_software.value, pie_time.value);
         document.getElementById("t3").innerHTML =  JSON.stringify(error_items);
      
 
@@ -73,7 +73,7 @@
             d3.csv(file)
                 .then(function(csvdata){
                     return csvdata.filter(function(d){
-                        if ((d.platform==platform) && (d.soft_version == software) &&(d.date_week==time)){return d;}
+                        if (d.vin=='h1'){return d;}
                         
                                     })
                     })
