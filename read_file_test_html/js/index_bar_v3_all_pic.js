@@ -1,9 +1,9 @@
 
 
-var pie_button = document.querySelector("#bar-search") // 这里写
+var bar_button = document.querySelector("#bar-search") // 这里写
 
 
-pie_button.addEventListener("click",draw_bar);
+bar_button.addEventListener("click",mybar);
 
 
 function mybar() {
@@ -366,8 +366,4 @@ function arraysum(arrays){
 function turnNum(nums){
     return nums.map(Number)
 };
-
-
-
-
 
