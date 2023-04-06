@@ -18,21 +18,9 @@ function mypie() {
 function mypie_data_draw(file, platform, soft_version, date_week){
             d3.csv(file)
                 .then(function(csvdata){
-                    return csvdata.filter(function(d){
-                        return d.platform==platform;
-                                    })
-                    })
-              .then(function(csvplatform){
-                        return csvplatform.filter(function(d){
-                            return d.soft_version == soft_version;
-                            })
-
-                    })
-                 .then(function(csv_ps){
-                        return csv_ps.filter(function(d){
-                            return d.date_week== date_week;
-                            })
-
+                  if ((csvdata.platform==platform) && (csvdata.soft_version==soft_version) && (csvdata.date_week==date_week)){
+                        return csvdata;}
+                    
                     })
                 .then(function(csv_filtered){
                     draw_pie(csv_filtered);
