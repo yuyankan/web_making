@@ -81,7 +81,7 @@
                 .then(function(csv_filtered){
                      
                     document.getElementById("t2").innerHTML = JSON.stringify(csv_filtered);
-                    a_num = csv_filteredt.map(function(d,i){return bar_turnNum((Object.values(d)).slice(4));});
+                    a_num = csv_filtered.map(function(d,i){return bar_turnNum((Object.values(d)).slice(4));});
                     document.getElementById("t1").innerHTML = a_num;
                  
                        
