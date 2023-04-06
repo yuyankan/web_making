@@ -20,8 +20,8 @@ function mypie_data_draw(file, platform, soft_version, date_week){
                 .then(function(csvdata){
                    return csvdata.filter(function(d){
                         if ((d.platform==platform) && (d.soft_version==soft_version) && (d.date_week==date_week)){
-                        return csvdata;};
-                   };
+                        return d;}
+                   });
                     
                     })
                 .then(function(csv_filtered){
