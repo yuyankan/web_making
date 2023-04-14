@@ -11,7 +11,7 @@ function mybar() {
 
         var bar_vin = document.querySelector(".bar #vinsearch");
    
-        mybar_data_draw("detail_error_20230411_09_56_50.csv", bar_vin.value);
+        mybar_data_draw("detail_error_20230413_08_05_54.csv", bar_vin.value);
 
         };
 
@@ -60,15 +60,17 @@ function draw_bar(data_object){
         var option_common = {
             //--------------    标题 title  ----------------   
             title: {                                
-                text: 'Iterm_char/vin',  
+                text: 'common_items',  
                 top:'3%',
-
-                //left: center             
+                left: 'center',
 
                 subtext:'',           //---副标题内容样式
-                //subtextStyle:{
-                    //color:'#bbb'                
-                //},
+                subtextStyle:{
+                    color:'#bbb' ,
+                    fontSize: 12,
+                    fontWeight: 'bold', // Set the desired font weight
+                    fontFamily: 'Arial', 
+                    },
 
                 padding:[0,0,0,0]             //---标题位置,因为图形是是放在一个dom中,因此用padding属性来定位
                
@@ -76,6 +78,7 @@ function draw_bar(data_object){
 
             //----------------   图例 legend  -----------------
             legend: {
+                show: true,
 
                 type:'plain',               //----图例类型，默认为'plain'，当图例很多时可使用'scroll'
                 top:'10%',                   //----图例相对容器位置,top\bottom\left\right            
@@ -84,8 +87,8 @@ function draw_bar(data_object){
                         //----图例选择,图形加载出来会显示选择的图例，默认为true
                 },
                 textStyle:{                 //----图例内容样式
-                    //color:'#fff',               //---所有图例的字体颜色
-                    //backgroundColor:'black',  //---所有图例的字体背景色
+                    color:'#fff',               //---所有图例的字体颜色
+                    backgroundColor:'black',  //---所有图例的字体背景色
                 },              
                 tooltip:{                   //图例提示框，默认不显示
                     show:true,
@@ -107,7 +110,7 @@ function draw_bar(data_object){
             tooltip: {
                 show:true,                  //---是否显示提示框,默认为true
                 trigger:'item',             //---数据项图形触发
-                formatter:"{b}({c})",
+                formatter:"{b}({c}%)",
                 padding:5,
                 /*axisPointer:{               //---指示样式
                     type:'shadow',      
@@ -122,11 +125,12 @@ function draw_bar(data_object){
 
             //-------------  grid区域  ----------------
             grid:{
-                show:false,                 //---是否显示直角坐标系网格
+                show:true,                 //---是否显示直角坐标系网格
                 //top:'10%',    // 一下数值可为百分比也可为具体像素值,                     //---相对位置，top\bottom\left\right  
-                right:'5%',
-                left:'0%',
-                bottom:'0%',
+                top:'5%',
+                right:'0%',
+                left:'5%',
+                bottom:'3%',
                 containLabel:true,          //---grid 区域是否包含坐标轴的刻度标签
                 tooltip:{                   //---鼠标焦点放在图形上，产生的提示框
                     show:true,  
@@ -173,7 +177,7 @@ function draw_bar(data_object){
                 axisTick:{                  //---坐标轴 刻度
                     show:true,                  //---是否显示
                     inside:true,                //---是否朝内
-                    lengt:3,                    //---长度
+                    lengt:30,                    //---长度
                     lineStyle:{
                         //color:'red',          //---默认取轴线的颜色
                         width:1,
@@ -181,6 +185,9 @@ function draw_bar(data_object){
                     },
                 },
                 axisLabel:{                 //---坐标轴 标签
+                    fontSize:10,
+                    fontFamily: 'Arial',
+
                     show:true,                  //---是否显示
                     inside:false,               //---是否朝内
                     rotate:0,                   //---旋转角度   
@@ -198,7 +205,7 @@ function draw_bar(data_object){
                 splitArea:{                 //--网格区域
                     show:false,                 //---是否显示，默认false
                 },              
-                data: item_columns.slice(0,6),//内容
+                data: ['a', 'b', 'c', 'd', 'e', 'f' ],//内容
             },
 
             //----------------------  y轴  ------------------------
@@ -242,6 +249,9 @@ function draw_bar(data_object){
                     },
                 },
                 axisLabel:{                 //---坐标轴 标签
+                    fontSize:10,
+                    fontFamily: 'Arial',
+
                     show:true,                  //---是否显示
                     inside:false,               //---是否朝内
                     rotate:0,                   //---旋转角度   
@@ -261,6 +271,13 @@ function draw_bar(data_object){
                 }                        
             },
 
+            graphic:{
+            type:'image',
+            left:'50%',// position the image at the center of the grid horizontally
+            top:'50%',//position the image at the center of the grid vertically
+
+        },
+
             //------------ 内容数据  -----------------
             series: [
               
@@ -279,20 +296,13 @@ function draw_bar(data_object){
                  
                         barBorderRadius:[1,1,0,0],       // 柱状图头部圆弧
                         // 柱状图颜色
-                          color: params => {
-                          //  colorList是每根柱子的颜色，一组是一个渐变
-                            var colorList = ['#62C467','#278D65','#FF5B7A','#BC3535',
+                          color: ['#62C467','#278D65','#FF5B7A','#BC3535',
                               '#FFF600','#D69105',
                               '#FFB400','#F66800',
                               '#00CCFF','#2A54B4',
-                              '#F75271','#754ABF']
-                            var index = params.dataIndex % colorList.length;
-                            // 柱子个数超过colorList设置的个数，循环使用
-                            return colorList[index]
+                              '#F75271','#754ABF'],
                           },
 
-                         
-                        },
                     
                     barWidth: '10',//---柱形宽度
                     data: data_sum.slice(0,6),
@@ -324,11 +334,16 @@ function draw_bar(data_object){
     //option_vt .series[0].data = data_sum.slice(8,14)
     //option_vt .xAxis.data = item_columns.slice(8,14)
     option_vt.series[0].data = 0
-    option_vt.series.push({name:"Null_error", type:"bar", data:[data_sum[13], data_sum[18]]});
-    option_vt.series.push({name:"Invalid", type:"bar", data:[data_sum[14], data_sum[19]]});
-    option_vt.series.push({name:"Abnormal", type:"bar", data:[data_sum[15], data_sum[20]]})
-    option_vt.series.push({name:"Unmatched_max", type:"bar", data:[data_sum[16], data_sum[21]]})
-    option_vt.series.push({name:"Unmatched_min", type:"bar", data:[data_sum[17], data_sum[22]]})
+    option_vt.series.push({name:"Null_error", type:"bar",  data:[data_sum[13], data_sum[18]]});
+    option_vt.series.push({name:"Invalid", type:"bar",  data:[data_sum[14], data_sum[19]]});
+    option_vt.series.push({name:"Abnormal", type:"bar",  data:[data_sum[15], data_sum[20]]})
+    option_vt.series.push({name:"Unmatched_max", type:"bar",  data:[data_sum[16], data_sum[21]]})
+    option_vt.series.push({name:"Unmatched_min", type:"bar",  data:[data_sum[17], data_sum[22]]})
+
+  
+  
+ 
+ 
     option_vt.xAxis.data = ['voltage', 'temperature']
     option_vt.title.text = 'voltage_temperature/vin'
 
@@ -364,7 +379,7 @@ function draw_bar(data_object){
 
     myChart_mileage.setOption(option_mileage);
     myChart_time_diff.setOption(option_time_diff);
-    mychart_speed.setOption(option_speed);
+    myChart_speed.setOption(option_speed);
     myChart_soc.setOption(option_soc);
     myChart_gps.setOption(option_gps);
 
@@ -384,6 +399,11 @@ function draw_bar(data_object){
 
 //arrays sum
 function arraysum(arrays){
+
+    if(arrays.length === 0){
+        return []
+    };
+
     let array_sum = Array(arrays[0].length).fill(0);
     arrays.map((d)=>d.map(function(e,i){array_sum[i] += e}));
     return array_sum;

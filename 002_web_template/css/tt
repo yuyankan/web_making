@@ -1,0 +1,4 @@
+a = [1, 2, 3]
+b = a.slice(1).map(d=>Number((d*100/a[0]).toFixed(2)))
+
+console.log(b)

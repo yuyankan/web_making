@@ -1,0 +1,39 @@
+,0
+code1,null_error(qnt)
+code2,Invalid_error(qnt)
+code3,Abnormal_error(qnt)
+code4,Reissue_error(qnt)
+code5,time_diff_error(qnt)
+code6,VIN_code_error(qnt)
+code7,"('Accumulated Mileage', 'null_error(qnt)')"
+code8,"('Accumulated Mileage', 'Invalid_error(qnt)')"
+code9,"('Accumulated Mileage', 'Abnormal_error(qnt)')"
+code10,"('Accumulated Mileage', 'duplicated(qnt)')"
+code11,"('Accumulated Mileage', 'change_engine_off(qnt)')"
+code12,"('Accumulated Mileage', '30s_2km_error(qnt)')"
+code13,"('voltage', 'null_error(qnt)')"
+code14,"('voltage', 'Invalid_error(qnt)')"
+code15,"('voltage', 'Abnormal_error(qnt)')"
+code16,"('voltage', 'max_unmatch(qnt)')"
+code17,"('voltage', 'min_unmatch(qnt)')"
+code18,"('temperature', 'null_error(qnt)')"
+code19,"('temperature', 'Invalid_error(qnt)')"
+code20,"('temperature', 'Abnormal_error(qnt)')"
+code21,"('temperature', 'max_unmatch(qnt)')"
+code22,"('temperature', 'min_unmatch(qnt)')"
+code23,"('Sending Time', '30s_2min(qnt)')"
+code24,"('Sending Time', '10min(qnt)')"
+code25,"('Sending Time', 'duplicated(qnt)')"
+code26,"('Recive Time', '30s_2min(qnt)')"
+code27,"('Recive Time', '10min(qnt)')"
+code28,"('Recive Time', 'duplicated(qnt)')"
+code29,"('Speed', 'null_error(qnt)')"
+code30,"('Speed', 'Invalid_error(qnt)')"
+code31,"('Speed', 'Abnormal_error(qnt)')"
+code32,"('Speed', 'p_not0speed')"
+code33,"('Speed', 'engineoff_not0speed')"
+code34,"('position', 'null_error(qnt)')"
+code35,"('position', 'Invalid_error(qnt)')"
+code36,"('position', 'latitude_longitude_error(qnt)')"
+code37,"('SOC', 'null_error(qnt)')"
+code38,"('SOC', '1_100_error(qnt)')"

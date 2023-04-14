@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BigData Visulization</title>
+
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <link rel="stylesheet" href="css/index_v1_all_pic_v2_all_bar.css">
+    </head>
+   
+
+    <body>
+        <header>
+        <h1>Data Quality Result Visulization</h1>
+        <div class="showTime">Current Time：<span></span></div>
+        </header>
+
+        <section class="mainbox">
+            <div class="column">
+      
+                <div class="bar1">
+                    <h2> Quality Item </h2>
+                    <div class="inputselection">
+         
+
+                        <label for="platform" >Platform
+                        <select id="platform" >
+                            <option value="">------</option>
+                            <option value="cma">CMA</option>
+                            <option value="spa">SPA</option>
+                        </select>
+                        </label>
+
+                        <label for="software" >Software Version
+                        <select  id="software">
+                            <option value="">------</option>
+                            <option value="1">01</option>
+                            <option value="2">02</option>
+                        </select>
+                        </label>
+                    
+
+                        <label for="time">Time/week
+                        <input  id="time" name="week" type="week" value="---"/>
+                        </label>
+
+                        <button id="bar1-search" , class="search_button">Search</button>
+            
+                    </div>
+
+                    <div class="allcharts">
+                        <div class="sub_row">
+                            <div class="chart"></div>
+
+                        </div>
+
+                        <div class="sub_row">
+
+                            <div class="chart"></div>
+                            <div class="chart"></div>
+        
+                        </div>
+
+                        <div class="sub_row">
+                            <div class="chart"></div>
+                            <div class="chart"></div>
+                        </div>
+
+
+                    </div>
+
+                <div class="my-footer"></div>
+
+
+                </div>
+            </div>
+
+            <div class="column">
+
+                <div class="bar">
+                    <h2> Item_ration/vin</h2>
+                    
+                    <div class="inputselection">
+                        <label for="vinsearch" >Vin input
+                        <input id="vinsearch" type="text" name="vinsearch" value=""/>
+                        </label>
+
+                        <button id="bar-search" class="search_button">Search</button>
+
+                    </div>
+
+                    <div class="allcharts">
+                        <div class="sub_row">
+
+                            <div class="chart"></div>
+                            <div class="chart"></div>
+                       
+                        </div>
+                        
+                        <div class="sub_row">
+                            <div class="chart"></div>
+                            <div class="chart"></div>
+
+                        </div>
+
+                        <div class="sub_row">
+                            <div class="chart"></div>
+                            <div class="chart"></div>
+                            <div class="chart"></div>
+                        </div>
+  
+  
+                    </div>
+                    
+                    <div class="my-footer"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </body>
+    <!--<script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>-->
+    <script src="js/echarts.min.js"></script>
+    <script src="js/flexible.js"></script>
+    <script src="js/index_bar_v3_all_pic_no_plat_soft_v1.js"></script>
+    <script src="js/index_show_time.js"></script>
+    <script src="js/index_bar1_v3_all_pic_no_plat_soft_v1_two_group.js"></script>
+
+</html>
