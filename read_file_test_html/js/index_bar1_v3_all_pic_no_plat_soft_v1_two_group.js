@@ -68,7 +68,7 @@ function draw_bar1(data_object, date_week){
         bar1_datas.push(bar1_data);
         cars_num.push(a_num.length)
         cars_ok_ratio.push(Number(((a_num.length-array_sum[0])*100/a_num.length).toFixed(2)))
-        console.log(cars_ok_ratio);
+
     }
 
   
@@ -84,8 +84,26 @@ function draw_bar1(data_object, date_week){
     var myChart_pre_3 = echarts.init(bar1_chars[3]);
     var myChart_pre_4 = echarts.init(bar1_chars[4]);
 
+    let data_bars = [];
+    for (let i=0; i<5; i++){
+        console.log('lenght:',bar1_datas[i])
+        if (bar1_datas[i].length > 0){
+            d1 = bar1_datas[i].slice(0,3);
+            d2 = Array(3).fill(0);
+            d1.push(...Array(bar1_datas[i].length-3).fill(0));
+            d2.push(...bar1_datas[i].slice(3));
+            data_bars.push([d1, d2]);
+            }
 
-    d0_1 = bar1_datas[0].slice(0,3)
+        else{
+            data_bars.push([[],[]]);
+            }
+        };
+    console.log(data_bars)
+
+
+
+    /*d0_1 = bar1_datas[0].slice(0,3)
     d0_2 = Array(3).fill(0)
     d0_1.push(...Array(bar1_datas[0].length-3).fill(0))
     d0_2.push(...bar1_datas[0].slice(3))
@@ -108,7 +126,7 @@ function draw_bar1(data_object, date_week){
     d4_1 = bar1_datas[4].slice(0,3)
     d4_2 = Array(3).fill(0)
     d4_1.push(...Array(bar1_datas[4].length-3).fill(0))
-    d4_2.push(...bar1_datas[4].slice(3))
+    d4_2.push(...bar1_datas[4].slice(3))*/
 
 
 
@@ -246,8 +264,8 @@ function draw_bar1(data_object, date_week){
         series: [{
             name: 'General Item',
             type: 'bar',
-            data: d0_1,
-            barWidth: 20,
+            data: data_bars[0][0],
+            barWidth: 10,
             barCategoryGap: '20%',
             barGap:'100%',
             
@@ -258,7 +276,7 @@ function draw_bar1(data_object, date_week){
             {
             name: 'General Item',
             type: 'bar',
-            data: d0_2,
+            data: data_bars[0][1],
             barWidth: 10,
             barCategoryGap: '10%',
             barGap:'100%',
@@ -279,21 +297,21 @@ function draw_bar1(data_object, date_week){
 
     //set data
     
-    option_pre_1.series[0].data = d1_1;
-    option_pre_1.series[1].data = d1_2;
+    option_pre_1.series[0].data = data_bars[1][0];
+    option_pre_1.series[1].data = data_bars[1][1];
      
     option_pre_1.title.text = 'Week: '+ date_week[1]+'       Cars checked: ' + cars_num[1] + 'ps, OK ratio(%): '+cars_ok_ratio[1];
 
-    option_pre_2.series[0].data = d2_1;
-    option_pre_2.series[1].data = d2_2;
+    option_pre_2.series[0].data = data_bars[2][0];
+    option_pre_2.series[1].data = data_bars[2][1];
     option_pre_2.title.text = 'Week: '+ date_week[2]+'       Cars checked: ' + cars_num[2] + 'ps, OK ratio(%): '+cars_ok_ratio[2];
 
-    option_pre_3.series[0].data = d3_1;
-    option_pre_3.series[1].data = d3_2;
+    option_pre_3.series[0].data = data_bars[3][0];
+    option_pre_3.series[1].data = data_bars[3][1];
     option_pre_3.title.text = 'Week: '+ date_week[3]+'       Cars checked: ' + cars_num[3] + 'ps, OK ratio(%): '+cars_ok_ratio[3];
 
-    option_pre_4.series[0].data = d4_1;
-    option_pre_4.series[1].data = d4_2;
+    option_pre_4.series[0].data = data_bars[4][0];
+    option_pre_4.series[1].data = data_bars[4][1];
     option_pre_4.title.text = 'Week: '+ date_week[4]+'       Cars checked: ' + cars_num[4] + 'ps, OK ratio(%): '+cars_ok_ratio[4];
    
 
