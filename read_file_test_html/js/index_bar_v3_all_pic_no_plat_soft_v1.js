@@ -11,7 +11,7 @@ function mybar() {
 
         var bar_vin = document.querySelector(".bar #vinsearch");
    
-        mybar_data_draw("detail_error_20230414_08_41_04.csv", bar_vin.value);
+        mybar_data_draw("detail_error_ratio.csv", bar_vin.value);
 
         };
 
@@ -60,12 +60,14 @@ function draw_bar(data_object){
         var option_common = {
                             title:{
                                 text:'Common items',
-                                top:'5%',
+                                
+                                top:'3%',
                                 left:'center',
                                 textStyle:{
-                                    fontSize: 15,
+                                    fontSize: 18,
                                     fontWeight: 'bold', // Set the desired font weight
-                                    fontFamily: 'Arial' // Set the desired font family; use family incase override by body font setup
+                                    fontFamily: 'Arial', // Set the desired font family; use family incase override by body font setup
+                                    color:'white',
                                 },
                                 show: true,
                                 //padding:[0,0,0,0],             //---标题位置,因为图形是是放在一个dom中,因此用padding属性来定位
@@ -73,7 +75,8 @@ function draw_bar(data_object){
         //标题
         tooltip: {
             trigger: 'item',
-            formatter: '{b}: ({c}%)'//"{a} <br/>{b}: {c} ({d}%)"，
+            textStyle:{fontSize:15,fontFamily: 'Arial',},
+            formatter: '{b}<br/>{a}: ({c}%)'//"{a} <br/>{b}: {c} ({d}%)"，
             /*formatter:function(val){   //让series 中的文字进行换行
                  console.log(val);//查看val属性，可根据里边属性自定义内容
                  var content = val['name'];
@@ -92,9 +95,13 @@ function draw_bar(data_object){
                 show:true,  
                 trigger:'item',         //---触发类型
                 textStyle:{
-                    //color:'#666',
+                    color:'white',
                 },
-            }
+            },
+
+        splitLine: {show: true,},
+        splitArea: {show: true,},
+
         },
 
         graphic:{
@@ -107,8 +114,11 @@ function draw_bar(data_object){
             xAxis: {
                 //barGap:'10%',
                 barCategoryGap:'10%',//---柱形间距
+                axisLine: {show: false},
+                axisTick: {show: false},//hide tick on axis line
 
-                show:true,                  //---是否显示
+                show:true,
+                color:'white',                  //---是否显示
                 position:'bottom',          //---x轴位置
                 offset:0,                   //---x轴相对于默认位置的偏移
                 type:'category',            //---轴类型，默认'category'
@@ -116,9 +126,11 @@ function draw_bar(data_object){
                 nameLocation:'end',         //---轴名称相对位置
                         
                 data: item_columns.slice(0,6).map(d=>d.split("_error").slice(0,1)),//内容
+
                 axisLabel:{                 //---坐标轴 标签
-                    fontSize:10,
+                    fontSize:12,
                     fontFamily: 'Arial',
+                    color:'white',  
 
                     show:true,                  //---是否显示
                     inside:false,               //---是否朝内
@@ -132,31 +144,37 @@ function draw_bar(data_object){
 
             //----------------------  y轴  ------------------------
             yAxis: {
-                show:true,                  //---是否显示
+                show:true,  
+                color:'white',             //---是否显示
                 position:'left',            //---y轴位置
                 offset:-5,                   //---y轴相对于默认位置的偏移
                 type:'value',           //---轴类型，默认'category'
                 name:'ratio(%)',              //---轴名称
                 nameLocation:'end',         //---轴名称相对位置value
                 nameTextStyle:{             //---坐标轴名称样式
-                    //color:"#fff",
-                    padding:[10,0,0,5],  //---坐标轴名称相对位置
+                    color:"white",
+                    padding:[5,0,0,5],  //---坐标轴名称相对位置
                 },
                 nameGap:15,                 //---坐标轴名称与轴线之间的距离
                 //nameRotate:270,           //---坐标轴名字旋转
-                
+                axisLine: {show: false},
+                axisTick: {show: false},//hide tick on axis line
+                splitLine: {show: false},//hide split line of y axis
                
                
                 axisLabel:{                 //---坐标轴 标签
-                    fontSize:10,
+                    fontSize:12,
                     fontFamily: 'Arial',
 
                     show:true,                  //---是否显示
                     inside:false,               //---是否朝内
                     rotate:0,                   //---旋转角度   
                     margin: 8,                  //---刻度标签与轴线之间的距离
-                    //color:'red',              //---默认取轴线的颜色
+                    color:'white',              //---默认取轴线的颜色
                 },
+
+                min: 0, // set the minimum value of y-axis
+                max: 100 // set the maximum value of y-axis
                                       
             },
 
@@ -168,11 +186,12 @@ function draw_bar(data_object){
         },
 
 
-        color: ['#62C467','#278D65','#FF5B7A','#BC3535',
+        /*color: ['#62C467','#278D65','#FF5B7A','#BC3535',
                               '#FFF600','#D69105',
                               '#FFB400','#F66800',
                               '#00CCFF','#2A54B4',
-                              '#F75271','#754ABF'],
+                              '#F75271','#754ABF'],*/
+        color: 'white',
                            
         series: [
             {
@@ -234,8 +253,9 @@ function draw_bar(data_object){
                         itemHeight: 5,
                         itemGap: 3,
                         textStyle: {
-                            fontSize: 8,
-                            fontWeight: 'bold',
+                            fontSize: 12,
+                            //fontWeight: 'bold',
+                            color:'white',
                             },
                   
                         orient: 'vertical',//distributed in row
@@ -263,8 +283,9 @@ function draw_bar(data_object){
                         itemHeight: 5,
                         itemGap: 3,
                         textStyle: {
-                        fontSize: 8,
-                        fontWeight: 'bold',
+                        fontSize: 12,
+                
+                        color:'white',
                             },
                   
                         orient: 'vertical',//distributed in row

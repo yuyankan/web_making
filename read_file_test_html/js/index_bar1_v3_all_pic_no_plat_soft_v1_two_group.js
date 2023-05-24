@@ -139,7 +139,7 @@ function draw_bar1(data_object, date_week){
            
         
             textStyle:{
-                
+                color:'white',
                 fontSize: 15,
                 fontWeight: 'bold', // Set the desired font weight
                 fontFamily: 'Arial' // Set the desired font family; use family incase override by body font setup
@@ -173,7 +173,9 @@ function draw_bar1(data_object, date_week){
                 textStyle:{
                     //color:'#666',
                 },
-            }
+            },
+        splitLine: {show: false,},
+        splitArea: {show: false,},
         },
 
         graphic:[{
@@ -200,6 +202,9 @@ function draw_bar1(data_object, date_week){
                 barCategoryGap:'10%',//---柱形间距
                 barWidth: '30%',
                 barGap: '50%',//distance of different group data set
+                color:'white',
+                axisLine: {show: false},//hide axis line
+                axisTick: {show: false},//hide tick on axis line
 
                 show:true,                  //---是否显示
                 position:'bottom',          //---x轴位置
@@ -213,26 +218,29 @@ function draw_bar1(data_object, date_week){
                     fontSize:10,
                     fontFamily: 'Arial',
 
+
                     show:true,                  //---是否显示
                     inside:false,               //---是否朝内
                     rotate:45,                   //---旋转角度   
                     margin: 8,                  //---刻度标签与轴线之间的距离
-                //color:'red',              //---默认取轴线的颜色
+                    color:'white',              //---默认取轴线的颜色
                 },
                     
             },
 
             //----------------------  y轴  ------------------------
             yAxis: {
-                show:true,                  //---是否显示
+                show:true,  
+                
+                color:'white',                //---是否显示
                 position:'left',            //---y轴位置
                 offset:0,                   //---y轴相对于默认位置的偏移
                 type:'value',           //---轴类型，默认'category'
                 name:'ratio(%)',              //---轴名称
                 nameLocation:'end',         //---轴名称相对位置value
                 nameTextStyle:{             //---坐标轴名称样式
-                    //color:"#fff",
-                    padding:[2,0,0,5],  //---坐标轴名称相对位置
+                    color:"white",
+                    padding:[0,0,0,5],  //---坐标轴名称相对位置
                 },
                 nameGap:5,                 //---坐标轴名称与轴线之间的距离
                 //nameRotate:270,           //---坐标轴名字旋转
@@ -247,8 +255,16 @@ function draw_bar1(data_object, date_week){
                     inside:false,               //---是否朝内
                     rotate:0,                   //---旋转角度   
                     margin: 8,                  //---刻度标签与轴线之间的距离
-                    //color:'red',              //---默认取轴线的颜色
+                    color:'white',              //---默认取轴线的颜色
                 },
+
+                splitLine: {show: false},//hide split line of y axis
+
+                axisLine: {show: false},//hide axis line
+                axisTick: {show: false},//hide tick on axis line
+
+                min: 0, // set the minimum value of y-axis
+                max: 100, // set the maximum value of y-axis
                                       
             },
 
@@ -270,7 +286,7 @@ function draw_bar1(data_object, date_week){
             barGap:'100%',
             
             itemStyle: {
-                color: '#61a0a8'
+                color: 'white'
                     },},
 
             {
@@ -281,7 +297,7 @@ function draw_bar1(data_object, date_week){
             barCategoryGap: '10%',
             barGap:'100%',
             itemStyle: {
-                color: '#62C467',
+                color: 'white',
                     },}
           
         ],
