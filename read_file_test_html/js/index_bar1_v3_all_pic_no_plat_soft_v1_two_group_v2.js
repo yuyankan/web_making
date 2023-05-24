@@ -175,7 +175,7 @@ function draw_bar1(data_object, date_week){
             var col_value_1 = [];
             //
             for (let j = 0; j < 5; j++){
-                comment_text = 'Week: '+ date_week[0]+'       Cars checked: ' + cars_num[0] + 'ps, OK ratio(%): '+ cars_ok_ratio[0]
+                comment_text = 'Week: '+ date_week[0]+'   Cars checked: ' + cars_num[0] + 'ps, OK ratio(%): '+ cars_ok_ratio[0]
                 console.log('0',data_all[i])
                 console.log('1',data_all[i][j],k, data_all[i][j][k])
             
@@ -184,7 +184,7 @@ function draw_bar1(data_object, date_week){
             }
 
             var columnDataValue = {
-                barWidth: 8,//柱状条宽度
+                barWidth: 12,//柱状条宽度
                 name:col_name_1,
                 type:'bar',
                 itemStyle: {
@@ -267,7 +267,7 @@ function build_char(mychart,text_t, col_name, col_val, date_week, comment_text){
         
             textStyle:{
                 color:'white',
-                fontSize: 15,
+                fontSize: 20,
                 fontWeight: 'bold', // Set the desired font weight
                 fontFamily: 'Arial' // Set the desired font family; use family incase override by body font setup
             },
@@ -313,12 +313,12 @@ function build_char(mychart,text_t, col_name, col_val, date_week, comment_text){
                   },
                   {
                     type: 'text',
-                    right: 10,
+                    right: 15,
                     top: 20,
                     style: {
                       text: comment_text,
                       fill: 'white',
-                      fontSize: 12,
+                      fontSize: 15,
                      
                     },
                   },
@@ -342,13 +342,13 @@ function build_char(mychart,text_t, col_name, col_val, date_week, comment_text){
                     
             data: date_week,//内容
             axisLabel:{                 //---坐标轴 标签
-                fontSize:10,
+                fontSize:15,
                 fontFamily: 'Arial',
 
 
                 show:true,                  //---是否显示
                 inside:false,               //---是否朝内
-                rotate:45,                   //---旋转角度   
+                rotate:0,                   //---旋转角度   
                 margin: 8,                  //---刻度标签与轴线之间的距离
                 color:'white',              //---默认取轴线的颜色
             },
@@ -365,9 +365,11 @@ function build_char(mychart,text_t, col_name, col_val, date_week, comment_text){
             type:'value',           //---轴类型，默认'category'
             name:'ratio(%)',              //---轴名称
             nameLocation:'end',         //---轴名称相对位置value
-            nameTextStyle:{             //---坐标轴名称样式
+            nameTextStyle:{  
+                       //---坐标轴名称样式
                 color:"white",
-                padding:[0,0,0,5],  //---坐标轴名称相对位置
+                fontSize:20,
+                padding:[0,5,0,5],  //---坐标轴名称相对位置
             },
             nameGap:5,                 //---坐标轴名称与轴线之间的距离
             //nameRotate:270,           //---坐标轴名字旋转
@@ -375,7 +377,7 @@ function build_char(mychart,text_t, col_name, col_val, date_week, comment_text){
            
            
             axisLabel:{                 //---坐标轴 标签
-                fontSize:10,
+                fontSize:15,
                 fontFamily: 'Arial',
 
                 show:true,                  //---是否显示
@@ -403,11 +405,11 @@ function build_char(mychart,text_t, col_name, col_val, date_week, comment_text){
                             top:40,
                             icon: 'rect',
                             left: 'center',
-                            itemWidth: 8,
-                            itemHeight: 5,
-                            itemGap: 3,
+                            itemWidth: 14,
+                            itemHeight: 8,
+                            itemGap: 15,
                             textStyle: {
-                                fontSize: 10,
+                                fontSize: 15,
                                 //fontWeight: 'bold',
                                 color:'white',
                                 },
